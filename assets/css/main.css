@@ -705,6 +705,26 @@ section,
 }
 
 /*--------------------------------------------------------------
+# News Section
+--------------------------------------------------------------*/
+
+.news-img {
+ max-width: 60%; /* Adjust this percentage as needed */
+ height: auto;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.news-img02 {
+ max-width: 90%; /* Adjust this percentage as needed */
+ height: auto;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+/*--------------------------------------------------------------
 # Resume Section
 --------------------------------------------------------------*/
 .resume .resume-title {
