@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>دکتر محمد مهدی رضاپور | استادیار مهندسی نرم‌افزار - متخصص هوش مصنوعی و بازی‌سازی</title>
+  <meta name="description" content="وب‌سایت شخصی دکتر محمد مهدی رضاپور، استادیار دانشکده مهندسی کامپیوتر دانشگاه اصفهان. پژوهشگر در زمینه هوش مصنوعی، مدل‌های زبانی بزرگ، داده‌کاوی و بازی‌های جدی.">
+  <meta name="keywords" content="محمد مهدی رضاپور, دانشگاه اصفهان, هوش مصنوعی, یادگیری عمیق, بازی سازی, داده کاوی, بازی های جدی, مهندسی کامپیوتر">
+  <meta name="author" content="محمد مهدی رضاپور">
+
+  <!-- Language Mapping -->
+  <link rel="alternate" hreflang="en" href="https://your-website-url.com/index.html" />
+  <link rel="alternate" hreflang="fa" href="https://your-website-url.com/index-fa.html" />
+
+  <meta property="og:title" content="دکتر محمد مهدی رضاپور | استادیار دانشگاه اصفهان">
+  <meta property="og:description" content="عضو هیئت علمی دانشگاه اصفهان، متخصص هوش مصنوعی و توسعه بازی‌های رایانه‌ای.">
+  <meta property="og:image" content="assets/img/profile-img.jpg">
+  <meta property="og:type" content="profile">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <!-- Added Vazirmatn for better Persian typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <!-- Changed to RTL version of Bootstrap for correct layout mirroring -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+  
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "محمد مهدی رضاپور",
+    "jobTitle": "استادیار",
+    "worksFor": {
+      "@type": "EducationalOrganization",
+      "name": "دانشگاه اصفهان"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "دانشگاه اصفهان"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "دانشگاه صنعتی اصفهان"
+      },
+    ],
+    "url": "https://mm-rezapour.github.io/index-fa.html",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao",
+      "https://www.linkedin.com/in/mmrezapour/",
+      "https://x.com/mm_rezapour",
+      "https://orcid.org/0000-0002-4233-2412",
+      "https://www.researchgate.net/profile/Mohammad-Mahdi-Rezapour"
+    ],
+    "knowsAbout": ["هوش مصنوعی", "بازی‌سازی", "داده‌کاوی", "مدل‌های زبانی بزرگ", "یادگیری عمیق", "بازی‌های جدی"]
+  }
+  </script>
+
+  <!-- Custom Styles for Persian -->
+  <style>
+    /* 1. Apply Persian Font to everything */
+    body, h1, h2, h3, h4, h5, h6, p, a, span, li, input, textarea, button {
+      font-family: 'Vazirmatn', sans-serif !important;
+    }
+
+    /* 2. FIX: Add spacing before the text starts (Right Side) */
+    /* We override the default 0 padding and force space on the right */
+    section, .section {
+        padding-right: 40px !important; /* Adds 40px space to the right of every section */
+        padding-left: 20px !important;  /* Adds smaller space to the left */
+    }
+
+    /* 3. Ensure the 'About Me' title and other containers respect the space */
+    .container {
+        padding-right: 15px !important; /* Bootstrap standard, reinforced */
+        padding-left: 15px !important;
+    }
+
+    /* 4. Fix List Alignment (Bullets and Text) */
+    .about .content ul {
+        padding-right: 0 !important;
+        list-style: none;
+    }
+    .about .content ul li {
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center; /* Aligns icon and text vertically */
+    }
+    .about .content ul i {
+        margin-left: 15px !important; /* Space between Icon and Text */
+        margin-right: 0 !important;
+    }
+
+    /* 5. Fix Typed Cursor */
+    .typed-cursor {
+        display: inline-block;
+    }
+
+    /* 6. Mobile Layout Adjustment (Optional) */
+    @media (max-width: 991px) {
+        section, .section {
+            padding-right: 20px !important; /* Smaller space on mobile */
+        }
+    }
+  </style>
+</head>
+
+<body class="index-page">
+<a href="index.html" class="lang-switch-fixed" title="English Version">
+	<img src="https://flagcdn.com/w40/gb.png" alt="UK Flag">
+</a>
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>خانه</span></a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i><span>درباره من</span></a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>رزومه</span></a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>نمونه کارها</span></a></li>
+        <li><a href="#services"><i class="bi bi-book"></i><span>دروس</span></a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>تماس</span></a></li>
+		<li><a href="index.html"><i class="bi bi-translate navicon"></i><span>English (انگلیسی)</span></a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background" >
+
+      <img src="assets/img/hero-bg.jpg" alt="">
+
+      <div class="container" data-aos="zoom-out">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <h2>سلام!</h2>
+            <p>من <span class="typed" data-typed-items="محمد مهدی رضاپور,یک پژوهشگر, یک توسعه‌دهنده, یک مدرس">محمد مهدی رضاپور</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span> هستم.</p>
+            <div class="social-links">
+              <a href="https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao"><i class="bi bi-google"></i></a>
+              <a href="https://x.com/mm_rezapour?lang=en"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://www.linkedin.com/in/mmrezapour/"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/mmrezapour/"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+       <h2>درباره من</h2>
+      </div><!-- End Section Title -->
+
+		<p>سلام، خوش آمدید! من محمد مهدی رضاپور هستم، عضو هیئت علمی دانشکده مهندسی کامپیوتر دانشگاه اصفهان. مسیر آکادمیک من در رشته مهندسی کامپیوتر با اخذ مدرک کارشناسی از دانشگاه ملایر (۲۰۱۴) آغاز شد و در ادامه، مقطع کارشناسی ارشد را در دانشگاه صنعتی اصفهان (۲۰۱۶) تحت هدایت دکتر مازیار پالهنگ با موفقیت پشت سر گذاشتم. سپس دوره دکتری خود را در دانشگاه اصفهان، با کسب رتبه اول آموزشی و انتشار 3 مقاله در مجلات Q1 (شامل یک مقاله در مجلات یک درصد برتر) و تحت راهنمایی دکتر محمدعلی نعمت‌بخش و دکتر افسانه فاطمی در آزمایشگاه کلان داده (BigData) به پایان رساندم.</p>
+		
+		<p>بیش از یک دهه است که تمرکز حرفه‌ای من در زمینه داده‌کاوی و توسعه راهکارهای هوش مصنوعی معطوف شده است؛ مسیری که طیف وسیعی از چالش‌ها، از تحلیل بازی‌های آنلاین و شبکه‌های اجتماعی گرفته تا بهینه‌سازی در صنایع سنگین همچون فولاد را در بر می‌گیرد. اما دنیای من تنها به دانشگاه محدود نمی‌شود؛ اشتیاق من به خلق دنیاهای مجازی باعث شده تا به عنوان یک توسعه‌دهنده بازی مستقل نیز فعالیت داشته باشم و با بهره‌گیری از ابزارهایی نظیر CryEngine، چندین پروژه بزرگ را با موفقیت اجرا کنم. </p>
+		
+        <p>علایق پژوهشی اصلی من در حال حاضر حول محورهای زیر است (اگرچه همیشه در حال بررسی موضوعات جدید هستم):</p>
+        <ul>
+            <li>هوش مصنوعی (به طور کلی)</li>
+            <li>مدل‌های زبانی بزرگ (LLMs)</li>
+            <li>بازی‌های رایانه‌ای و پلتفرم‌های اجتماعی</li>
+            <li>بازیابی اطلاعات</li>
+        </ul>
+
+
+      
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="تصویر پرتره دکتر محمد مهدی رضاپور، استادیار مهندسی نرم‌افزار">
+          </div>
+          <div class="col-lg-8 content">
+            <h2>دانشمند داده، توسعه‌دهنده هوش مصنوعی و بازی‌ساز.</h2>
+            <p class="fst-italic py-3">
+
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-left"></i> <strong>تاریخ تولد:</strong> <span>۶ دی ۱۳۷۰</span></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>مدرک:</strong> <span>دکتری مهندسی نرم‌افزار</span></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>ایمیل:</strong> <span>mm.rezapour AT ec.iut.ac DOT ir</span></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>تلفن:</strong> <span>۹۸۳۱۳۷۹۳۴۵۳۷+</span></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>شهر:</strong> <span>اصفهان، ایران</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-left"></i> <strong>آدرس:</strong> <a href="https://compold.ui.ac.ir/~mm.rezapour/" target="_blank">وب‌سایت</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>برنامه هفتگی:</strong> <a href="https://comp.ui.ac.ir/Dorsapax/Data/Sub_108/File/DrRezapour_403404_02_Edited.pdf" target="_blank">مشاهده برنامه (PDF)</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>ریسرچ‌گیت:</strong> <a href="https://www.researchgate.net/profile/Mohammad-Mahdi-Rezapour" target="_blank">فعالیت‌های پژوهشی</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>گوگل اسکالر:</strong> <a href="https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao" target="_blank">آخرین مقالات</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>لینکدین:</strong> <a href="https://www.linkedin.com/in/mmrezapour/" target="_blank">سوابق کاری</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>ORCID:</strong> <a href="https://orcid.org/0000-0002-4233-2412" target="_blank">داوری‌ مجلات</a></li>
+                  <li><i class="bi bi-chevron-left"></i> <strong>وضعیت پروژه:</strong> <span>آماده همکاری</span></li>
+                </ul>
+              </div>
+            </div>
+            <p class="py-3">
+            اطلاعات دقیق در مورد انتشارات من را می‌توانید در گوگل اسکالر (آخرین مقالات) و ریسرچ‌گیت (کلیه فعالیت‌های پژوهشی) بیابید. پروفایل ORCID من سوابق داوری برای مجلات علمی و همکاری‌های ویراستاری را نشان می‌دهد. می‌توانید از طریق پروفایل لینکدین با من در ارتباط باشید یا برنامه هفتگی دانشگاه اصفهان را بررسی کنید. در حال حاضر آماده پذیرش پروژه‌های جدید هستم.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+
+
+<!-- News Section -->
+<section id="news" class="news section">
+
+ <!-- Section Title -->
+ <div class="container section-title" data-aos="fade-up">
+ <h2>اخبار</h2>
+ <p>از آخرین رویدادها و اطلاعیه‌ها باخبر شوید.</p>
+ </div><!-- End Section Title -->
+
+ <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+ <div class="swiper init-swiper">
+ <script type="application/json" class="swiper-config">
+ {
+ "loop": true,
+ "speed": 600,
+ "autoplay": {
+ "delay": 5000
+ },
+ "slidesPerView": "auto",
+ "pagination": {
+ "el": ".swiper-pagination",
+ "type": "bullets",
+ "clickable": true
+ }
+ }
+ </script>
+ <div class="swiper-wrapper">
+ 
+ <div class="swiper-slide">
+  <div class="news-item">
+    <div class="row gy-4 justify-content-center align-items-center">
+      <div class="col-lg-7">
+        <div class="news-content">
+          <h3><a href="https://jcomsec.ui.ac.ir" target="_blank">فراخوان مقاله: ویژه‌نامه مدل‌های زبانی بزرگ</a></h3>
+          <p>
+            مجله محاسبات و امنیت (JComSec) برای ویژه‌نامه‌ای با عنوان "مدل‌های زبانی بزرگ و کاربردهای آن‌ها" مقاله می‌پذیرد. این شماره به بررسی آخرین پیشرفت‌ها، چالش‌ها و جهت‌گیری‌های آینده LLMها خواهد پرداخت. ما از مقالات پژوهشی اصیل و مروری استقبال می‌کنیم.
+          </p>
+          <div class="news-meta">
+            <p><strong>مهلت ارسال:</strong> ۳۰ آگوست ۲۰۲۵ (۸ شهریور ۱۴۰۴)</p>
+            <p><strong>اعلام نتایج اولیه:</strong> ۳۰ اکتبر ۲۰۲۵ (۸ آبان ۱۴۰۴)</p>
+          </div>
+
+          <!-- Guest Editors Section -->
+          <div class="guest-editors" style="margin-top: 15px;">
+            <p><strong>دبیران مهمان:</strong></p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li>دکتر محمدعلی نعمت‌بخش (استاد تمام، دانشگاه اصفهان)</li>
+              <li>دکتر محمد مهدی رضاپور (استادیار، دانشگاه اصفهان)</li>
+            </ul>
+          </div>
+          <!-- End Guest Editors Section -->
+
+          <a href="https://jcomsec.ui.ac.ir" class="read-more" target="_blank">اطلاعات بیشتر</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center">
+        <!-- Make sure to replace this path with the actual path to your image -->
+        <img src="assets/img/news/JCS_SpecialIssueLLM_.jpg" class="img-fluid news-img" alt="پوستر فراخوان مقاله برای ویژه‌نامه مدل‌های زبانی بزرگ مجله محاسبات و امنیت">
+      </div>
+    </div>
+  </div>
+</div><!-- End news item -->
+
+<div class="swiper-slide">
+  <div class="news-item">
+    <div class="row gy-4 justify-content-center align-items-center">
+      <div class="col-lg-7">
+        <div class="news-content">
+          <h3><a href="#">ارائه درس جدید تحصیلات تکمیلی: یادگیری عمیق</a></h3>
+          <p>
+            برای ترم بهار آینده، درس "یادگیری عمیق" را برای دانشجویان تحصیلات تکمیلی (ارشد و دکتری) گروه مهندسی کامپیوتر تدریس خواهم کرد. سرفصل‌های این دوره تمرکز ویژه‌ای بر حوزه‌های هوش مصنوعی مولد (Generative AI) و مدل‌های زبانی بزرگ (LLMs) خواهد داشت.
+          </p>
+          
+          <!-- Key Textbooks Section -->
+          <div class="key-textbooks" style="margin-top: 15px;">
+            <p><strong>منابع اصلی:</strong></p>
+            <ul style="padding-right: 20px; margin-bottom: 15px;">
+              <li dir="ltr" style="text-align: left;"><em>Understanding Deep Learning</em> by S. J. Prince (2024)</li>
+              <li dir="ltr" style="text-align: left;"><em>Deep Learning for Beginners</em> by P. Rivas (2020)</li>
+              <li dir="ltr" style="text-align: left;"><em>Build a Large Language Model (From Scratch)</em> by S. Raschka (2024)</li>
+            </ul>
+          </div>
+          <!-- End Key Textbooks Section -->
+
+          <a href="#" class="read-more">مشاهده جزئیات درس</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center">
+        <!-- Please replace this placeholder with a relevant course image -->
+        <img src="assets/img/news/deep-learning-course.jpg" class="img-fluid news-img" alt="تصویر گرافیکی نشان‌دهنده شبکه‌های عصبی برای درس تحصیلات تکمیلی یادگیری عمیق">
+      </div>
+    </div>
+  </div>
+</div><!-- End news item -->
+
+<div class="swiper-slide">
+  <div class="news-item">
+    <div class="row gy-4 justify-content-center align-items-center">
+      <div class="col-lg-7">
+        <div class="news-content">
+          <h3><a href="https://mm-rezapour.github.io/" target="_blank">نشست پژوهشی: حوزه‌های نوآورانه پژوهش در بازی‌های رایانه‌ای</a></h3>
+          <p>
+            برگزاری نشست علمی به مناسبت هفته پژوهش با موضوع "حوزه‌های نوآورانه پژوهش در بازی‌های رایانه‌ای"، توسط دکتر محمد مهدی رضاپور، عضو هیئت علمی گروه مهندسی نرم‌افزار دانشگاه اصفهان.
+          </p>
+          <div class="news-meta">
+            <p><strong>سخنران:</strong> دکتر محمد مهدی رضاپور</p>
+            <p><strong>تاریخ:</strong> سه‌شنبه، ۲۷ آذر</p>
+            <p><strong>زمان:</strong> ساعت ۱۱:۰۰</p>
+            <p><strong>مکان:</strong> دانشگاه اصفهان، طبقه سوم دانشکده مهندسی کامپیوتر، تالار ویدئو کنفرانس</p>
+          </div>
+          <a href="mailto:mm.rezapour@ec.iut.ac.ir" class="read-more">تماس جهت اطلاعات بیشتر</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center">
+        <!-- Make sure to replace this path with the actual path to your image -->
+        <img src="assets/img/news/research-meeting-games.jpg" class="img-fluid news-img02" alt="پوستر نشست علمی در مورد حوزه‌های نوآورانه پژوهش در بازی‌های رایانه‌ای در دانشگاه اصفهان">
+      </div>
+    </div>
+  </div>
+</div><!-- End news item -->
+ 
+ </div>
+ <div class="swiper-pagination"></div>
+ </div>
+
+ </div>
+
+</section><!-- /News Section -->
+
+
+
+<!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>رزومه</h2>
+        <p>اگر تمایل به دریافت رزومه کامل من دارید، لطفاً پیام دهید.</p>
+      </div><!-- End Section Title -->
+	  
+	  
+
+	        <div class="container">
+
+        <div class="row">
+          
+          <!-- Left Column: Peer Reviews (Part 1) -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">داوری در مجلات با ضریب تأثیر بالا</h3>
+            
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Journal of Big Data</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Springer Nature (Q1)</em></p>
+              <ul>
+                <li>داوری مقالات در موضوعاتی شامل عامل‌های هوش مصنوعی آگاه از احساسات (Emotionally Aware AI)، قطعه‌بندی معنایی سه‌بعدی و مدیریت هوشمند ترافیک.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Interactive Learning Environments</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Taylor & Francis (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Scientific Reports</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Nature Portfolio (Q1)</em></p>
+              <ul>
+                <li>داور فعال برای مقالات در زمینه‌های یادگیری عمیق، تحلیل‌های ورزشی و برنامه‌ریزی رفتار در هوش مصنوعی.</li>
+                <li>انجام حدود ۱۲ داوری در سال ۲۰۲۵.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">International Journal of Human-Computer Interaction</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Taylor & Francis (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Multimedia Tools and Applications</h4>
+              <h5>2022 - 2025</h5>
+              <p><em dir="ltr">Springer Nature (Q1)</em></p>
+              <ul>
+                <li>تکمیل بیش از ۱۳ داوری با تمرکز بر سیستم‌ها و ابزارهای چندرسانه‌ای.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Journal of Ambient Intelligence and Humanized Computing</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Springer Nature (Q1)</em></p>
+              <ul>
+                 <li>داوری موضوعات مرتبط با توسعه بازی‌های مبتنی بر هوش مصنوعی.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Peer Reviews (Part 2) + Editorial Service -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            
+            <!-- Continued Peer Reviews to balance the page -->
+            <h3 class="resume-title"> داوری در مجلات با ضریب تأثیر بالا (ادامه)</h3>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Discover Artificial Intelligence</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Springer Nature (Q1)</em></p>
+              <ul>
+                <li>داوری مقالات در زمینه یادگیری تقویتی (Reinforcement Learning) و بهینه‌سازی.</li>
+              </ul>
+            </div>
+            
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Research in Autism Spectrum Disorders</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Elsevier (Q1)</em></p>
+              <ul>
+                <li>تکمیل ۳ داوری.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Heliyon</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Elsevier (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4 dir="ltr" style="text-align: left;">Journal of Computational Social Science</h4>
+              <h5>2024</h5>
+              <p><em dir="ltr">Springer Nature (Q2)</em></p>
+            </div>
+
+            <!-- Editorial & Conference Service Section -->
+            <h3 class="resume-title" style="margin-top: 30px;">خدمات ویراستاری و کنفرانس</h3>
+
+            <div class="resume-item">
+              <h4>دبیر مهمان (Guest Editor)</h4>
+              <h5>2025</h5>
+              <p><em dir="ltr">Journal of Computing and Security</em></p>
+              <p>ویژه‌نامه با موضوع "مدل‌های زبانی بزرگ و کاربردهای آن‌ها".</p>
+            </div>
+
+            <div class="resume-item">
+              <h4>عضو کمیته علمی (Scientific Committee Member)</h4>
+              <h5>2025</h5>
+              <p>هشتمین کنفرانس بین‌المللی بازی‌های رایانه‌ای؛ فرصت‌ها و چالش‌ها (CGCO)</p>
+              <p>دانشگاه اصفهان</p>
+            </div>
+
+            <!-- Verified Record Link -->           
+            <div class="resume-item">
+                <h4>سوابق تأیید شده</h4>
+                <p>
+                    تاریخچه کامل داوری‌های تأیید شده من در پروفایل پژوهشی ORCID موجود است.
+                </p>
+                <p style="margin-top: 10px;">
+                    <a href="https://orcid.org/0000-0002-4233-2412" target="_blank" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">مشاهده ORCID</a>
+                </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Resume Section -->
+
+
+
+    </section><!-- /Resume Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>پروژه‌ها</h2>
+      </div><!-- End Section Title -->
+        <p>این بخش شامل پروژه‌های مختلفی است که توسط من و دانشجویانم انجام شده است. تمرکز کارهای اخیر من عمدتاً بر روی هوش مصنوعی با کاربردهایی در شبکه‌های اجتماعی و صنعت فولاد بوده است. با این حال، من همچنین بیش از ۱۳ سال تجربه در طراحی و توسعه بازی‌های ویدئویی (به ویژه بازی‌های جدی) دارم که نمونه‌هایی از آن‌ها را در اینجا خواهید دید. علاوه بر این، پروژه‌های دانشجویی در زمینه توسعه سیستم‌های بازیابی اطلاعات مجهز به قابلیت‌های جستجوی معنایی را سرپرستی کرده‌ام.</p>
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">همه</li>
+            <li data-filter=".filter-app">بازی‌های ویدئویی من</li>
+            <li data-filter=".filter-app02">بازی‌های دانشجویان من</li>
+            <li data-filter=".filter-product">پردازش زبان طبیعی (NLP)</li>
+            <li data-filter=".filter-branding">صنعت نسل ۴ (Industry 4.0)</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/m-portfolio/m-portfolio-1.jpg" class="img-fluid" alt="اسکرین‌شات از یک بازی جدی نظامی در سبک مخفی‌کاری با حضور شخصیت کماندو">
+              <div class="portfolio-info">
+                <h4>بازی جدی نظامی</h4>
+                <p>در این بازی، شما در نقش یک کماندو بازی می‌کنید و باید نگهبانان پایگاه نظامی دشمن را بدون به صدا درآوردن آژیر خطر یا آگاه کردن دیگران از بین ببرید.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-1.jpg" title="Military Serious Game" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="assets/img/m-portfolio/m-portfolio-2.jpg" class="img-fluid" alt="نمای کلی از چارچوب مهارت سنجی دیپ‌اسکیل، سیستم مبتنی بر هوش مصنوعی برای تحلیل عملکرد بازیکنان">
+              <div class="portfolio-info">
+                <h4>DeepSkill (دیپ‌اسکیل)</h4>
+                <p>دیپ‌اسکیل یک سیستم مبتنی بر هوش مصنوعی است که برای ارزیابی مهارت‌ها و عملکرد بازیکنان در بازی‌های چندنفره طراحی شده است. این سیستم می‌تواند انواع داده‌های رفتاری و عملکردی بازیکنان، از جمله معیارهای استاندارد مانند مسیرهای طی شده، کار تیمی و میزان آسیب به حریفان و همچنین داده‌های پیچیده‌تر مانند پیام‌های چت را تحلیل کند. این سیستم با دقت بالای ۹۶ درصد بینش‌هایی در مورد مهارت‌های بازیکن ارائه می‌دهد. سه مقاله در مورد این سیستم در مجلات معتبر Q1 منتشر شده است.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-2.jpg" title="DeepSkill" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/m-portfolio/m-portfolio-3.jpg" class="img-fluid" alt="رابط کاربری سیستم اپتیما استیل برای بهینه‌سازی سرعت خط اسیدشویی ورق‌های فولادی">
+              <div class="portfolio-info">
+                <h4>OptimaSteel (اپتیما استیل)</h4>
+                <p>سیستم مبتنی بر هوش مصنوعی برای بهینه‌سازی سرعت ورق در خط اسیدشویی نورد سرد، یکی از محصولات توسعه یافته تحت قرارداد با شرکت فولاد مبارکه اصفهان است. این سیستم می‌تواند سرعت ورق در خط اسیدشویی را با استفاده از داده‌های بلادرنگ مراحل نورد تختال فولادی به حداکثر برساند و اطمینان حاصل کند که ضمن تمیز شدن کامل لایه اکسیدی روی ورق‌ها، کیفیت ورق‌ها نیز حفظ شود.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-3.jpg" title="OptimaSteel" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/m-portfolio/m-portfolio-4.jpg" class="img-fluid" alt="صحنه‌ای از گیم‌پلی یک بازی پازل آموزشی که چالش‌های منطقی را نمایش می‌دهد">
+              <div class="portfolio-info">
+                <h4>بازی جدی آموزشی</h4>
+                <p>در این بازی، شما با معماهای مختلفی روبرو می‌شوید که باید با استفاده از راهنمایی‌های ارائه شده در داخل بازی آن‌ها را حل کنید.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-4.jpg" title="Educational Serious Game" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="assets/img/m-portfolio/m-portfolio-5.jpg" class="img-fluid" alt="رابط کاربری سامانه یافته، سیستم بازیابی اسناد معنایی مبتنی بر هوش مصنوعی">
+              <div class="portfolio-info">
+                <h4>یافته (Yafteh)</h4>
+                <p>سیستم بازیابی اسناد مبتنی بر هوش مصنوعی ما برای یافتن کارآمد و دقیق اطلاعات در حجم زیادی از داده‌ها طراحی شده است. با بهره‌گیری از تکنیک‌های پیشرفته پردازش زبان طبیعی، این سیستم پرسش‌های کاربر را به شیوه‌ای پیچیده درک و تفسیر می‌کند و امکان بازیابی اسناد مرتبط را با دقت بالا فراهم می‌سازد. با یادگیری مداوم از تعاملات و بازخوردها، سیستم ما نتایج جستجو را در طول زمان بهینه می‌کند.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-5.jpg" title="Yafteh" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/m-portfolio/m-portfolio-6.jpg" class="img-fluid" alt="اپلیکیشن هوشمند فابریک‌سنس در حال شناسایی نوع بافت و جنس پارچه">
+              <div class="portfolio-info">
+                <h4>FabricSense (فابریک‌سنس)</h4>
+                <p>سیستم تشخیص بافت پارچه ما یک فناوری پیشرفته است که برای شناسایی و طبقه‌بندی دقیق انواع مختلف مواد پارچه‌ای طراحی شده است.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-6.jpg" title="FabricSense" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/m-portfolio/m-portfolio-7.jpg" class="img-fluid" alt="گیم‌پلی بازی تیراندازی اول شخص مسیر بهشت در منطقه عملیاتی اروندکنار">
+              <div class="portfolio-info">
+                <h4>مسیر بهشت (Path to Paradise)</h4>
+                <p>"مسیر بهشت" یک بازی تیراندازی اول شخص است که داستان یک عملیات نظامی در طول جنگ ایران و عراق در منطقه عملیاتی اروندکنار را روایت می‌کند.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-7.jpg" title="Path to Paradise" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+                                                
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/m-portfolio/fav02.jpg" class="img-fluid" alt="صحنه نبرد و تیراندازی از بازی رایانه‌ای مسیر بهشت">
+              <div class="portfolio-info">
+                <h4>مسیر بهشت</h4>
+                <p>"مسیر بهشت" یک بازی تیراندازی اول شخص است که داستان یک عملیات نظامی در طول جنگ ایران و عراق در منطقه عملیاتی اروندکنار را روایت می‌کند.</p>
+                <a href="assets/img/m-portfolio/fav02.jpg" title="Path to Paradise" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+                                                
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
+              <img src="assets/img/m-portfolio/blade01.jpg" class="img-fluid" alt="طراحی شخصیت و نمای گیم‌پلی از بازی اکشن تیغه شکوفه (Blossom Blade)">
+              <div class="portfolio-info">
+                <h4>Blossom Blade (تیغه شکوفه)</h4>
+                <p>در این بازی، دختری که والدینش در لحظه تولد او توسط ماموران شیطانی کشته شده‌اند، به دنبال انتقام است.</p>
+                <a href="assets/img/m-portfolio/blade01.jpg" title="Blossom Blade" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+                                                
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
+              <img src="assets/img/m-portfolio/crazytaxi01.jpg" class="img-fluid" alt="گیم‌پلی رانندگی جهان‌باز در شهر از بازی ویدئویی راننده تاکسی">
+              <div class="portfolio-info">
+                <h4>Taxi Driver (راننده تاکسی)</h4>
+                <p>در این بازی شما در نقش یک راننده تاکسی بازی می‌کنید که می‌توانید برای ارتقای وسیله نقلیه خود درآمد کسب کنید یا به سادگی آزادانه در شهر پرسه بزنید.</p>
+                <a href="assets/img/m-portfolio/crazytaxi01.jpg" title="Taxi Driver" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+                                                
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
+              <img src="assets/img/m-portfolio/tran01.jpg" class="img-fluid" alt="محیط ترسناک و اتمسفریک از بازی بقا و ماجراجویی تنها در ترانسیلوانیا">
+              <div class="portfolio-info">
+                <h4>Alone in Transylvania (تنها در ترانسیلوانیا)</h4>
+                <p>"تنها در ترانسیلوانیا" یک بازی ترس و بقا در ژانر اکشن-ماجراجویی است که با عناصر ترس و تعلیق آمیخته شده است. داستان درباره فردی است که از وجود گنجی باستانی در هتل متروکه پدربزرگش باخبر می‌شود. پس از یافتن اسناد و مدارک در بایگانی پدربزرگ، تصمیم می‌گیرد به دنبال گنج برود. طبق شایعات، این هتل توسط جد او پس از قتلش نفرین شده تا هیچ کس نتواند آن را پیدا کند. با وجود این داستان‌های شوم، قهرمان داستان تصمیم می‌گیرد آن‌ها را نادیده بگیرد. اما پس از ورود به هتل مرموز و ترسناک، با چالش‌های متعددی روبرو می‌شود و درمی‌یابد که باید فکر گنج را رها کرده و تنها بر یافتن راهی برای خروج تمرکز کند...</p>
+                <a href="assets/img/m-portfolio/tran01.jpg" title="Alone in Transylvania" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="assets/img/m-portfolio/m-portfolio-8.jpg" class="img-fluid" alt="رابط چت یک ربات هوش مصنوعی مکالمه‌ای هوشمند در حال گفتگو با کاربر">
+              <div class="portfolio-info">
+                <h4>Conversational AI (هوش مصنوعی مکالمه‌ای)</h4>
+                <p>ما یک هوش مصنوعی مکالمه‌ای (چت‌بات) نوآورانه ارائه می‌دهیم که برای متحول کردن تعامل کاربر در پلتفرم‌های مختلف طراحی شده است. این چت‌بات پیشرفته از الگوریتم‌های مدرن پردازش زبان طبیعی برای برقراری مکالمات معنادار با کاربران، درک نیازهای آن‌ها و ارائه پاسخ‌های دقیق استفاده می‌کند. این سیستم به طور یکپارچه با سیستم‌های موجود ادغام می‌شود، خدمات مشتری را بهبود می‌بخشد، فرآیندها را ساده می‌کند و رضایت کلی کاربر را افزایش می‌دهد.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-8.jpg" title="Conversional AI" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/m-portfolio/m-portfolio-9.jpg" class="img-fluid" alt="تصویر خروجی سیستم هوش مصنوعی استیل‌سایت برای تشخیص عیوب سطحی ورق‌های فولادی">
+              <div class="portfolio-info">
+                <h4>SteelSight (استیل‌سایت)</h4>
+                <p>سیستم مبتنی بر هوش مصنوعی ما برای تشخیص عیوب سطحی ورق‌های فولادی، امکان تضمین بلادرنگ کیفیت ورق‌ها را در بخش‌های مختلف فرآیند نورد فراهم می‌کند. این سیستم امکان شناسایی سریع هرگونه نقص احتمالی در ورق‌ها را میسر می‌سازد.</p>
+                <a href="assets/img/m-portfolio/m-portfolio-9.jpg" title="SteelSight" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="جزئیات بیشتر" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+                                                
+
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>دروس</h2>
+        <p>موارد زیر برخی از دروسی است که من در دانشگاه اصفهان تدریس می‌کنم.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
+                </svg>
+                <i class="bi bi-nvidia"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>یادگیری عمیق (Deep Learning)</h3>
+              </a>
+              <p>یادگیری عمیق از شبکه‌های عصبی مصنوعی با لایه‌های متعدد برای یادگیری الگوهای پیچیده از داده‌ها استفاده می‌کند و به رایانه‌ها امکان می‌دهد ویژگی‌ها را به طور خودکار استخراج کرده و در وظایفی مانند تشخیص تصویر و پردازش زبان پیش‌بینی انجام دهند.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"></path>
+                </svg>
+                <i class="bi bi-joystick"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>طراحی بازی‌های رایانه‌ای</h3>
+              </a>
+              <p>این دوره به دانشجویان عناصر اساسی خلق بازی‌های ویدئویی، از توسعه مفهوم تا برنامه‌نویسی پایه و طراحی تعاملی را آموزش می‌دهد. از طریق پروژه‌های عملی، شرکت‌کنندگان یاد می‌گیرند که ایده‌های خلاقانه را به تجربیات دیجیتالی جذاب تبدیل کنند.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"></path>
+                </svg>
+                <i class="bi bi-search"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>بازیابی اطلاعات (IR)</h3>
+              </a>    
+              <p>بازیابی اطلاعات (IR) بر علم جستجو و یافتن اطلاعات مرتبط در مجموعه‌های بزرگ داده متمرکز است. این دوره مفاهیم اساسی مانند نمایه‌سازی، پردازش پرس‌وجو، الگوریتم‌های رتبه‌بندی و معیارهای ارزیابی مانند دقت و فراخوانی را پوشش می‌دهد.</p>
+              </a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
+                </svg>
+                <i class="bi bi-file-binary"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>مبانی علوم داده</h3>
+              </a>
+              <p>مبانی علوم داده، اصول و تکنیک‌های اساسی ضروری برای درک و کار با داده‌ها در رشته‌های مختلف را معرفی می‌کند و دانشجویان را به مهارت‌های مورد نیاز برای تحلیل و استخراج بینش از داده‌ها مجهز می‌سازد.</p>
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item item-indigo position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
+                </svg>
+                <i class="bi bi-database"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>مبانی طراحی پایگاه داده</h3>
+              </a>
+              <p>این درس اصول و شیوه‌های اساسی برای ایجاد پایگاه‌های داده کارآمد و خوش‌ساختار را پوشش می‌دهد و پایه‌ای محکم برای طراحی راهکارهای ذخیره‌سازی داده فراهم می‌کند. دانشجویان مفاهیم کلیدی در طراحی پایگاه داده، تکنیک‌های نرمال‌سازی و بهترین روش‌ها برای بهینه‌سازی عملکرد پایگاه داده را خواهند آموخت.</p>
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item item-pink position-relative">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
+                </svg>
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <a href="#" class="stretched-link">
+                <h3>برنامه‌نویسی پایتون</h3>
+              </a>
+              <p>این دوره دانشجویان را با یکی از محبوب‌ترین و پرکاربردترین زبان‌های برنامه‌نویسی جهان آشنا می‌کند. این دوره مفاهیم اساسی مانند متغیرها، ساختارهای داده، کنترل جریان، توابع و برنامه‌نویسی شی‌ءگرا را پوشش می‌دهد.</p>
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>تماس</h2>
+        <p>می‌توانید از طریق روش‌های زیر با من در ارتباط باشید:</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>آدرس</h3>
+                <p>اتاق ۱۱۷، دانشکده مهندسی کامپیوتر، دانشگاه اصفهان، خیابان هزارجریب، شهر اصفهان، استان اصفهان، ایران</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>تلفن تماس</h3>
+                <p>۹۸۳۱۳۷۹۳۴۵۳۷+</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>ایمیل</h3>
+                <p>mm.rezapour A.T ec.iut.ac DOT ir</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="نام شما" required="">
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="ایمیل شما" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="موضوع" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="پیام" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">در حال ارسال</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">پیام شما ارسال شد. متشکرم!</div>
+
+                  <button type="submit">ارسال پیام</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <h3 class="sitename"></h3>
+      <p></p>
+      <div class="social-links d-flex justify-content-center">
+              <a href="https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao"><i class="bi bi-google"></i></a>
+              <a href="https://x.com/mm_rezapour?lang=en"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://www.linkedin.com/in/mmrezapour/"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/mmrezapour/"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>حق کپی‌رایت</span> <strong class="px-1 sitename">MMRezapour</strong> <span>تمامی حقوق محفوظ است</span>
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you've purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

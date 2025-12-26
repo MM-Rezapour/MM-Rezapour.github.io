@@ -4,9 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Homepage for MM-Rezapour</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Dr. Mohammad Mahdi Rezapour | Assistant Professor of Software Engineering - AI & Game Dev</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Mohammad Mahdi Rezapour is an Assistant Professor at the University of Isfahan. Specializing in Artificial Intelligence, Large Language Models (LLMs), Data Mining, and Serious Games. View research, publications, and portfolio.">
+  <meta name="keywords" content="Mohammad Mahdi Rezapour, Assistant Professor, University of Isfahan, Artificial Intelligence, AI, Deep Learning, Game Development, Serious Games, Data Mining, Computer Engineering">
+  <meta name="author" content="Mohammad Mahdi Rezapour">
+
+  <!-- Language Mapping (Crucial for dual-language sites) -->
+  <link rel="alternate" hreflang="en" href="https://mm-rezapour.github.io/index.html" />
+  <link rel="alternate" hreflang="fa" href="https://mm-rezapour.github.io/index-fa.html" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Mohammad Mahdi Rezapour | AI Researcher & Game Developer">
+  <meta property="og:description" content="Assistant Professor at University of Isfahan. Expert in AI, LLMs, and Serious Games.">
+  <meta property="og:image" content="assets/img/profile-img.jpg"> <!-- Ensure this points to your photo -->
+  <meta property="og:url" content="https://mm-rezapour.github.io">
+  <meta property="og:type" content="profile">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -26,6 +40,58 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <style>
+    /* FIX: Add spacing to the Right side so text doesn't touch the edge */
+    section, .section {
+        padding-right: 50px !important; /* Force space on the right side */
+        padding-left: 20px !important;  /* Keep standard space on the left */
+    }
+
+    /* Mobile Adjustment: Reduce the space slightly on smaller screens */
+    @media (max-width: 991px) {
+        section, .section {
+            padding-right: 20px !important;
+        }
+    }
+  </style>
+  
+  <!-- Structured Data for Academic Profile -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammad Mahdi Rezapour",
+    "jobTitle": "Assistant Professor",
+    "worksFor": {
+      "@type": "EducationalOrganization",
+      "name": "University of Isfahan"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Isfahan"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Isfahan University of Technology"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Malayer University"
+      }
+    ],
+    "url": "https://mm-rezapour.github.io",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao",
+      "https://www.linkedin.com/in/mmrezapour/",
+      "https://x.com/mm_rezapour",
+      "https://orcid.org/0000-0002-4233-2412",
+      "https://www.researchgate.net/profile/Mohammad-Mahdi-Rezapour"
+    ],
+    "knowsAbout": ["Artificial Intelligence", "Game Development", "Data Mining", "Large Language Models", "Deep Learning"]
+  }
+  </script>
 
   <!-- =======================================================
   * Template Name: MyResume
@@ -37,6 +103,9 @@
 </head>
 
 <body class="index-page">
+<a href="index-fa.html" class="lang-switch-fixed" title="Persian Version">
+	<img src="https://flagcdn.com/w40/ir.png" alt="Iran Flag">
+</a>
 
   <header id="header" class="header d-flex flex-column justify-content-center">
 
@@ -50,6 +119,7 @@
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
         <li><a href="#services"><i class="bi bi-book"></i><span>Courses</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+		<li><a href="index-fa.html"><i class="bi bi-translate navicon"></i><span>Persian (فارسی)</span></a></li>
       </ul>
     </nav>
 
@@ -86,11 +156,11 @@
       <div class="container section-title" data-aos="fade-up">
        <h2>About</h2>
 	  </div><!-- End Section Title -->
-		<p>Hello and welcome! I'm Mahdi, an Assistant Professor here at the University of Isfahan. My academic background includes a Bachelor's degree from Malayer University (2014) and a Master's from Isfahan University of Technology (2016), where I worked under the supervision of Dr. Maziar Palhang. I then completed my Ph.D. in Computer Software Engineering here at the University of Isfahan, fortunate to be guided by Prof. Mohammad Ali Nematbakhsh and Dr. Afsaneh Fatemi at the BigData Laboratory.</p>
+		<p>Hello and welcome! I am Mohammad Mahdi Rezapour, an Assistant Professor at the Faculty of Computer Engineering, University of Isfahan. My academic path in computer engineering began with a Bachelor's degree from Malayer University (2014) and continued with a Master's from Isfahan University of Technology (2016) under the supervision of Dr. Maziar Palhang. I then completed my Ph.D. at the University of Isfahan, graduating with the first rank and publishing three papers in Q1 journals (including one in the top 1%), under the guidance of Prof. Mohammad Ali Nematbakhsh and Dr. Afsaneh Fatemi at the BigData Laboratory.</p>
 
-		<p>For more than 10 years, I've been developing expertise in data mining and AI solutions applied to various areas – from online gaming and social networks to industries like steel manufacturing. Outside of my academic work, I'm also an indie game developer skilled with CryEngine and similar tools, and I've brought several major projects to completion.</p>
+        <p>For over a decade, my professional focus has been on data mining and developing AI solutions; a path that encompasses a wide range of challenges, from analyzing online games and social networks to optimization in heavy industries like steel manufacturing. However, my world is not limited to the university; my passion for creating virtual worlds has led me to work as an indie game developer, utilizing tools like CryEngine to successfully execute several major projects.</p>
 
-		<p>My main research interests currently revolve around the following areas (though I'm always exploring new topics):</p>
+        <p>My main research interests currently revolve around the following areas (though I'm always exploring new topics):</p>
 		<ul>
 			<li>Artificial Intelligence broadly</li>
 			<li>Large Language Models (LLMs)</li>
@@ -104,7 +174,7 @@
 
         <div class="row gy-4 justify-content-center">
           <div class="col-lg-4">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="Portrait of Dr. Mohammad Mahdi Rezapour, Assistant Professor of Software Engineering">
           </div>
           <div class="col-lg-8 content">
             <h2>Data scientist &amp; AI Developer &amp; Video Game Developer.</h2>
@@ -203,7 +273,7 @@
       </div>
       <div class="col-lg-5 text-center">
         <!-- Make sure to replace this path with the actual path to your image -->
-        <img src="assets/img/news/JCS_SpecialIssueLLM_.jpg" class="img-fluid news-img" alt="Call for Papers: Special Issue on Large Language Models">
+        <img src="assets/img/news/JCS_SpecialIssueLLM_.jpg" class="img-fluid news-img" alt="Call for Papers: Special Issue on Large Language Models Journal of Computing and Security">
       </div>
     </div>
   </div>
@@ -261,7 +331,7 @@
       </div>
       <div class="col-lg-5 text-center">
         <!-- Make sure to replace this path with the actual path to your image -->
-        <img src="assets/img/news/research-meeting-games.jpg" class="img-fluid news-img02" alt="Innovative Research Areas in Computer Games Meeting">
+        <img src="assets/img/news/research-meeting-games.jpg" class="img-fluid news-img02" alt="Innovative Research Areas in Computer Games Meeting, University of Isfahan">
       </div>
     </div>
   </div>
@@ -285,6 +355,138 @@
         <h2>Resume</h2>
         <p>If you would like to receive my complete resume, please kindly send a message.</p>
       </div><!-- End Section Title -->
+	  
+	  
+
+	        <div class="container">
+
+        <div class="row">
+          
+          <!-- Left Column: Peer Reviews (Part 1) -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">High Impact Peer Reviews</h3>
+            
+            <div class="resume-item">
+              <h4>Journal of Big Data</h4>
+              <h5>2025</h5>
+              <p><em>Springer Nature (Q1)</em></p>
+              <ul>
+                <li>Reviewer for topics including Emotionally Aware AI Agents, 3D Semantic Segmentation, and Smart Traffic Management.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>Interactive Learning Environments</h4>
+              <h5>2025</h5>
+              <p><em>Taylor & Francis (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4>Scientific Reports</h4>
+              <h5>2025</h5>
+              <p><em>Nature Portfolio (Q1)</em></p>
+              <ul>
+                <li>Active reviewer for manuscripts covering Deep Learning, Sports Analytics, and AI behavior planning.</li>
+                <li>Completed approximately 12 reviews in 2025.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>International Journal of Human-Computer Interaction</h4>
+              <h5>2025</h5>
+              <p><em>Taylor & Francis (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4>Multimedia Tools and Applications</h4>
+              <h5>2022 - 2025</h5>
+              <p><em>Springer Nature (Q1)</em></p>
+              <ul>
+                <li>Completed over 13 reviews focusing on multimedia systems and tools.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>Journal of Ambient Intelligence and Humanized Computing</h4>
+              <h5>2025</h5>
+              <p><em>Springer Nature (Q1)</em></p>
+              <ul>
+                 <li>Reviewer for AI-powered game development topics.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Peer Reviews (Part 2) + Editorial Service -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            
+            <!-- Continued Peer Reviews to balance the page -->
+            <h3 class="resume-title">High Impact Peer Reviews (Continued)</h3>
+
+            <div class="resume-item">
+              <h4>Discover Artificial Intelligence</h4>
+              <h5>2025</h5>
+              <p><em>Springer Nature (Q1)</em></p>
+              <ul>
+                <li>Reviewer for manuscripts on Reinforcement Learning and Optimization.</li>
+              </ul>
+            </div>
+            
+            <div class="resume-item">
+              <h4>Research in Autism Spectrum Disorders</h4>
+              <h5>2025</h5>
+              <p><em>Elsevier (Q1)</em></p>
+              <ul>
+                <li>Completed 3 reviews.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>Heliyon</h4>
+              <h5>2025</h5>
+              <p><em>Elsevier (Q1)</em></p>
+            </div>
+
+            <div class="resume-item">
+              <h4>Journal of Computational Social Science</h4>
+              <h5>2024</h5>
+              <p><em>Springer Nature (Q2)</em></p>
+            </div>
+
+            <!-- Editorial & Conference Service Section -->
+            <h3 class="resume-title" style="margin-top: 30px;">Editorial & Conference Service</h3>
+
+            <div class="resume-item">
+              <h4>Guest Editor</h4>
+              <h5>2025</h5>
+              <p><em>Journal of Computing and Security</em></p>
+              <p>Special Issue on "Large Language Models and Their Applications".</p>
+            </div>
+
+            <div class="resume-item">
+              <h4>Scientific Committee Member</h4>
+              <h5>2025</h5>
+              <p><em>8th International Conference on Computer Games; Opportunities and Challenges (CGCO)</em></p>
+              <p>University of Isfahan</p>
+            </div>
+
+            <!-- Verified Record Link -->           
+            <div class="resume-item">
+                <h4>Verified Record</h4>
+                <p>
+                    My full peer review history is verified and available on the ORCID Researcher Profile.
+                </p>
+                <p style="margin-top: 10px;">
+                    <a href="https://orcid.org/0000-0002-4233-2412" target="_blank" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">View ORCID</a>
+                </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
 
 
 
@@ -314,7 +516,7 @@
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/m-portfolio/m-portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-1.jpg" class="img-fluid" alt="Screenshot of a stealth-based military serious game featuring a commando character">
               <div class="portfolio-info">
                 <h4>Military Serious Game</h4>
                 <p>In this game, you play as a commando and you must eliminate enemy military base guards without triggering the alarm or alerting others.</p>
@@ -324,7 +526,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/m-portfolio/m-portfolio-2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-2.jpg" class="img-fluid" alt="Overview of DeepSkill, an AI-based player performance analysis system">
               <div class="portfolio-info">
                 <h4>DeepSkill</h4>
                 <p>Deepskill is an AI-based system designed to assess the skills and performance of players in multiplayer games. This system can analyze a variety of behavioral and performance data from players, including not only standard metrics like paths traveled, teamwork, and damage dealt to opponents but also more complex data such as chat messages. It provides insights into player skills with an overall accuracy exceeding 96%. Three papers about this system have been published in top-tier Q1 journals.</p>
@@ -334,7 +536,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/m-portfolio/m-portfolio-3.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-3.jpg" class="img-fluid" alt="OptimaSteel system interface for optimizing steel sheet pickling line speed">
               <div class="portfolio-info">
                 <h4>OptimaSteel</h4>
                 <p>The AI-based system for optimizing sheet speed on the pickling line of a cold rolling steel unit is one of the products developed under the project contracted with Mobarakeh Steel Company in Esfahan. This system can maximize sheet speed on the pickling line using real-time data monitored from the steel slab rolling stages, ensuring that while the oxide layer on the sheets is thoroughly cleaned, the quality of the sheets is also maintained.</p>
@@ -344,7 +546,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/m-portfolio/m-portfolio-4.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-4.jpg" class="img-fluid" alt="Gameplay scene from an educational puzzle game showing logic challenges">
               <div class="portfolio-info">
                 <h4>Educational Serious Game</h4>
                 <p>In this game, you will engage in various puzzles, which you must solve using the hints provided within the game.</p>
@@ -354,7 +556,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/m-portfolio/m-portfolio-5.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-5.jpg" class="img-fluid" alt="User interface of Yafteh, an AI-based Semantic Document Retrieval System">
               <div class="portfolio-info">
                 <h4>Yafteh</h4>
                 <p>Our AI-based Document Retrieval System is designed to efficiently and accurately locate information within large volumes of data. Leveraging cutting-edge natural language processing techniques, the system understands and interprets user queries in a sophisticated manner, allowing it to retrieve relevant documents with high precision. By continually learning from interactions and feedback, our system optimizes search results over time, ensuring that users receive the most pertinent information quickly. This innovative approach not only saves time but also enhances productivity by enabling seamless access to critical data across various formats and sources.</p>
@@ -364,7 +566,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/m-portfolio/m-portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-6.jpg" class="img-fluid" alt="FabricSense AI application identifying textile and fabric types">
               <div class="portfolio-info">
                 <h4>FabricSense</h4>
                 <p>Our Fabric Tissue Recognition System is an advanced technology designed to accurately identify and classify different types of fabric materials.</p>
@@ -374,7 +576,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/m-portfolio/m-portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-7.jpg" class="img-fluid" alt="First-person shooter gameplay from Path to Paradise set in the Arvand Kenar operational area">
               <div class="portfolio-info">
                 <h4>Path to Paradise</h4>
                 <p>"Path to Paradise" is a first-person shooter game that narrates the tale of a military operation during the Iran-Iraq war in the operational area of Arvand Kenar.</p>
@@ -384,7 +586,7 @@
             </div><!-- End Portfolio Item -->
 												
 												<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/m-portfolio/fav02.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/fav02.jpg" class="img-fluid" alt="Combat scene from Path to Paradise video game">
               <div class="portfolio-info">
                 <h4>Path to Paradise</h4>
                 <p>Path to Paradise" is a first-person shooter game that narrates the tale of a military operation during the Iran-Iraq war in the operational area of Arvand Kenar.</p>
@@ -394,7 +596,7 @@
             </div><!-- End Portfolio Item -->
 												
 												<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
-              <img src="assets/img/m-portfolio/blade01.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/blade01.jpg" class="img-fluid" alt="Character artwork and gameplay from the action game Blossom Blade">
               <div class="portfolio-info">
                 <h4>Blossom Blade</h4>
                 <p>In this game, a girl whose parents were killed by evil agents the instant she was born seeks vengeance.</p>
@@ -404,7 +606,7 @@
             </div><!-- End Portfolio Item -->
 												
 												<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
-              <img src="assets/img/m-portfolio/crazytaxi01.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/crazytaxi01.jpg" class="img-fluid" alt="Open-world driving gameplay from the Taxi Driver video game">
               <div class="portfolio-info">
                 <h4>Taxi Driver</h4>
                 <p>In this game, you play as a taxi driver, where you can earn money to upgrade your vehicle or simply roam freely around the city.</p>
@@ -414,7 +616,7 @@
             </div><!-- End Portfolio Item -->
 												
 												<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app02">
-              <img src="assets/img/m-portfolio/tran01.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/tran01.jpg" class="img-fluid" alt="Atmospheric horror environment from the survival game Alone in Transylvania">
               <div class="portfolio-info">
                 <h4>Alone in Transylvania</h4>
                 <p>"Alone in Transylvania" is a survival horror game set within the action-adventure genre, inspired by elements of fear and suspense. The storyline follows an individual who learns about an ancient treasure hidden in their grandfather's long-abandoned hotel. After discovering documents and evidence in their grandfather’s archives, they decide to seek the treasure. According to rumors, the hotel was cursed by their ancestor after his murder to ensure that no one would ever find it. Despite these ominous tales, the protagonist chooses to ignore them and pursue the treasure. However, upon entering the eerie and mysterious hotel, they encounter numerous challenges and realize that they must abandon thoughts of the treasure and focus solely on finding a way out...</p>
@@ -424,7 +626,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/m-portfolio/m-portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-8.jpg" class="img-fluid" alt="Chat interface of an intelligent Conversational AI bot interacting with a user">
               <div class="portfolio-info">
                 <h4>Conversional AI</h4>
                 <p>We offer an innovative conversational AI (chatbot) designed to revolutionize user interaction across various platforms. This advanced chatbot utilizes cutting-edge natural language processing algorithms to engage users in meaningful conversations, understand their needs, and provide accurate responses. It seamlessly integrates with existing systems, enhancing customer service, streamlining processes, and improving overall user satisfaction. Our product is customizable, allowing businesses to tailor its functionalities to meet specific industry requirements, ensuring a personalized experience for every user. Whether it's handling customer inquiries, guiding users through complex processes, or serving as a virtual assistant, our Conversational AI is an essential tool for businesses looking to enhance their digital communication strategies.</p>
@@ -434,7 +636,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/m-portfolio/m-portfolio-9.jpg" class="img-fluid" alt="">
+              <img src="assets/img/m-portfolio/m-portfolio-9.jpg" class="img-fluid" alt="SteelSight AI system visualization for detecting surface defects on steel sheets">
               <div class="portfolio-info">
                 <h4>SteelSight</h4>
                 <p>Our AI-based system for detecting surface defects in steel sheets enables real-time assurance of the quality of steel sheets across various sections of the rolling process. It allows for the rapid identification of any potential defects in the sheets.</p>
