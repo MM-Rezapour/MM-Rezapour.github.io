@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>New Paper: Dynamic Difficulty Adjustment Based on Player Chat | Mohammad Mahdi Rezapour</title>
+  
+  <meta name="description" content="A brief overview of my recent paper published in IJHCI on using NLP and player chat analysis for Dynamic Difficulty Adjustment (DDA) in video games.">
+  <meta name="author" content="Mohammad Mahdi Rezapour">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .paper-header {
+      background: #f8f9fa;
+      padding: 60px 0 30px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .paper-content {
+      padding: 50px 20px;
+    }
+    .paper-meta {
+      font-size: 0.95rem;
+      color: #6c757d;
+      margin-bottom: 20px;
+    }
+    .paper-meta a {
+      color: #0563bb;
+      font-weight: 500;
+    }
+    .paper-figure {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .paper-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .paper-figure figcaption {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #6c757d;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+        <li><a href="index.html#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
+        <li><a href="index.html#news" class="active"><i class="bi bi-newspaper navicon"></i><span>News</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Paper Header Section -->
+    <section class="paper-header">
+      <div class="container" data-aos="fade-up">
+        <h2>A Two-Dimensional Affective Approach for Dynamic Difficulty Adjustment Based on Player Chat Analysis</h2>
+        <div class="paper-meta">
+          <span>Published in: <strong>International Journal of Human–Computer Interaction</strong></span> | 
+          <span>Date: <strong>February 26, 2026</strong></span> | 
+          <span>DOI: <a href="https://doi.org/10.1080/10447318.2026.2628144" target="_blank">10.1080/10447318.2026.2628144</a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paper Content Section -->
+    <section class="paper-content">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            
+            <p class="lead">
+              Maintaining the perfect balance between challenge and player skill is a cornerstone of great game design. In my latest paper, we introduce an innovative method to dynamically adjust game difficulty by reading between the lines of what players say to each other.
+            </p>
+
+            <h3 class="mt-5">The Challenge of Traditional DDA</h3>
+            <p>
+              Dynamic Difficulty Adjustment (DDA) systems traditionally rely on physiological recording devices (like EEG or heart-rate monitors) to detect a player's emotional state. While effective, these methods are invasive, expensive, and largely inaccessible for the general gaming public. Other approaches rely on genre-specific mechanics or interruptive questionnaires. We sought a cost-effective, genre-agnostic alternative.
+            </p>
+
+            <div class="paper-figure">
+              <!-- Suggestion: Place a web conceptual image of NLP/Chat here -->
+              <img src="assets/img/news/concept-dota-nlp.jpg" class="img-fluid w-50 shadow" alt="Conceptual image of AI analyzing game chat">
+              <figcaption>Leveraging Natural Language Processing (NLP) in multiplayer game chat.</figcaption>
+            </div>
+
+            <h3 class="mt-5">Our Proposed Solution: Analyzing Chat with AI</h3>
+            <p>
+              Using advanced Natural Language Processing (NLP), we designed a framework that analyzes in-game chat to infer players' perceived game difficulty. Building upon Flow theory, we focused on evaluating player emotions across two distinct dimensions:
+            </p>
+            <ul>
+              <li><strong>Hope & Frustration:</strong> Does the player expect to win, or do they feel defeated?</li>
+              <li><strong>Anxiety & Boredom:</strong> Is the challenge overwhelming, or is the game moving too slowly?</li>
+            </ul>
+
+            <div class="paper-figure">
+              <!-- Suggestion: Place Figure 1 (Flow Theory) here -->
+              <img src="assets/img/news/flow-theory-fig1.jpg" class="img-fluid w-50 shadow" alt="Four-channel model grounded in flow theory">
+              <figcaption>Figure 1: Four-channel model grounded in flow theory, illustrating the balance of anxiety and boredom.</figcaption>
+            </div>
+
+            <h3 class="mt-5">Methodology & Results</h3>
+            <p>
+              We curated and annotated two massive datasets based on actual player interactions in <strong>Dota 2</strong>. We fine-tuned the <code>Twitter-RoBERTa-base</code> language model, which is exceptionally well-suited for informal, slang-heavy online communication. 
+            </p>
+            <p>
+              Our novel algorithm triggers difficulty adjustments only when specific emotional combinations are detected (e.g., increasing difficulty when high hope and high boredom coincide). This reduces false positives and ensures accurate adjustments.
+            </p>
+            <p>
+              <strong>The Results:</strong> The models achieved phenomenal accuracy rates of over <strong>97%</strong> in identifying hope/frustration and over <strong>98%</strong> for anxiety/boredom, with negligible inference latency (around 2.3 milliseconds per message). This proves that real-time, affect-driven DDA using text chat is not only highly accurate but also highly scalable for mass-market games.
+            </p>
+
+            <div class="paper-figure">
+              <!-- Suggestion: Place Figure 2 (Algorithm Architecture) here -->
+              <img src="assets/img/news/dda-architecture-fig2.jpg" class="img-fluid w-50 shadow" alt="Architecture of the proposed chat analysis approach">
+              <figcaption>Figure 2: The architecture of our proposed approach for dynamic difficulty adjustment.</figcaption>
+            </div>
+
+            <h3 class="mt-5">Read the Full Paper</h3>
+            <p>
+              If you are interested in the technical details, the algorithms, or the comprehensive dataset evaluations, you can access the full paper through Taylor & Francis at the link below:
+            </p>
+            <a href="https://doi.org/10.1080/10447318.2026.2628144" target="_blank" class="btn btn-primary mt-3"><i class="bi bi-journal-text"></i> Read the Article on IJHCI</a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background text-center py-4">
+    <div class="container">
+      <div class="copyright">
+        <span>Copyright</span> <strong class="px-1 sitename">MMRezapour</strong> <span>All Rights Reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
