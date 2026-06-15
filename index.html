@@ -988,7 +988,6 @@
 	
 	<script>
 	  window.addEventListener('DOMContentLoaded', () => {
-		// Prevent tracking on local development (localhost)
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  fetch('https://eovygkwcis0a89k.m.pipedream.net', {
 			method: 'POST',
@@ -996,6 +995,8 @@
 			body: JSON.stringify({
 			  page: window.location.pathname,
 			  referrer: document.referrer || "Direct Visit",
+			  screen: `${window.screen.width}x${window.screen.height}`,
+			  language: navigator.language || "Unknown",               
 			  timestamp: new Date().toISOString()
 			})
 		  }).catch(err => console.log("Analytics error:", err));
