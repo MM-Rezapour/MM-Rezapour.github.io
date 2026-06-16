@@ -986,7 +986,7 @@
 	</script>
 	
 	
-	<script>
+	<!--<script>
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  fetch('https://eovygkwcis0a89k.m.pipedream.net', {
@@ -999,6 +999,28 @@
 			  language: navigator.language || "Unknown",               
 			  timestamp: new Date().toISOString()
 			})
+		  }).catch(err => console.log("Analytics error:", err));
+		}
+	  });
+	</script>-->
+	
+	<script>
+	  window.addEventListener('DOMContentLoaded', () => {
+		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+		  const visitData = {
+			page: window.location.pathname,
+			referrer: document.referrer || "Direct Visit",
+			screen: `${window.screen.width}x${window.screen.height}`,
+			language: navigator.language || "Unknown",
+			userAgent: navigator.userAgent, // Sent so Pipedream can parse it once a day
+			timestamp: new Date().toISOString()
+		  };
+
+		  // Sends directly to Firebase (0 Pipedream credits used)
+		  fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(visitData)
 		  }).catch(err => console.log("Analytics error:", err));
 		}
 	  });
