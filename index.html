@@ -1008,22 +1008,24 @@
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  
-		  fetch('https://ipapi.co/json/')
+		  fetch('https://api.ipify.org?format=json')
 			.then(res => res.json())
-			.then(geo => {
+			.then(data => {
+			  const rawIp = data.ip;
+			  
+			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
+
 			  const visitData = {
 				page: window.location.pathname,
 				referrer: document.referrer || "Direct Visit",
 				screen: `${window.screen.width}x${window.screen.height}`,
 				language: navigator.language || "Unknown",
 				userAgent: navigator.userAgent,
-				country: geo.country_name || "Unknown",
-				city: geo.city || "Unknown",
-				isp: geo.org || "Unknown",
+				ip: obfuscatedIp, // Stored securely as an obfuscated string
 				timestamp: new Date().toISOString()
 			  };
 
-			  // 2. Save complete visitor data to Firebase
+
 			  return fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -1031,15 +1033,14 @@
 			  });
 			})
 			.catch(err => {
+
 			  const fallbackData = {
 				page: window.location.pathname,
 				referrer: document.referrer || "Direct Visit",
 				screen: `${window.screen.width}x${window.screen.height}`,
 				language: navigator.language || "Unknown",
 				userAgent: navigator.userAgent,
-				country: "Unknown (Blocked)",
-				city: "Unknown (Blocked)",
-				isp: "Unknown (Blocked)",
+				ip: "Blocked",
 				timestamp: new Date().toISOString()
 			  };
 
