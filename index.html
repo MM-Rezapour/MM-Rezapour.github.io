@@ -1008,11 +1008,11 @@
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  
+
 		  fetch('https://api.ipify.org?format=json')
 			.then(res => res.json())
 			.then(data => {
 			  const rawIp = data.ip;
-			  
 			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
 
 			  const visitData = {
@@ -1021,19 +1021,18 @@
 				screen: `${window.screen.width}x${window.screen.height}`,
 				language: navigator.language || "Unknown",
 				userAgent: navigator.userAgent,
-				ip: obfuscatedIp, // Stored securely as an obfuscated string
+				ip: obfuscatedIp,
 				timestamp: new Date().toISOString()
 			  };
 
 
-			  return fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
+			  return fetch('https://firebase-proxy.mru-x90.workers.dev/visits.json', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(visitData)
 			  });
 			})
 			.catch(err => {
-
 			  const fallbackData = {
 				page: window.location.pathname,
 				referrer: document.referrer || "Direct Visit",
@@ -1044,7 +1043,7 @@
 				timestamp: new Date().toISOString()
 			  };
 
-			  fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
+			  fetch('https://firebase-proxy.mru-x90.workers.dev/visits.json', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(fallbackData)
