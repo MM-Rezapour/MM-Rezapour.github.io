@@ -1007,21 +1007,48 @@
 	<script>
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  const visitData = {
-			page: window.location.pathname,
-			referrer: document.referrer || "Direct Visit",
-			screen: `${window.screen.width}x${window.screen.height}`,
-			language: navigator.language || "Unknown",
-			userAgent: navigator.userAgent, // Sent so Pipedream can parse it once a day
-			timestamp: new Date().toISOString()
-		  };
+		  
+		  fetch('https://ipapi.co/json/')
+			.then(res => res.json())
+			.then(geo => {
+			  const visitData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				country: geo.country_name || "Unknown",
+				city: geo.city || "Unknown",
+				isp: geo.org || "Unknown",
+				timestamp: new Date().toISOString()
+			  };
 
-		  // Sends directly to Firebase (0 Pipedream credits used)
-		  fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(visitData)
-		  }).catch(err => console.log("Analytics error:", err));
+			  // 2. Save complete visitor data to Firebase
+			  return fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(visitData)
+			  });
+			})
+			.catch(err => {
+			  const fallbackData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				country: "Unknown (Blocked)",
+				city: "Unknown (Blocked)",
+				isp: "Unknown (Blocked)",
+				timestamp: new Date().toISOString()
+			  };
+
+			  fetch('https://webpagevisitlistener-default-rtdb.firebaseio.com/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(fallbackData)
+			  }).catch(e => console.log("Analytics error:", e));
+			});
 		}
 	  });
 	</script>
