@@ -1017,45 +1017,40 @@
 	</script>-->
 	
 	<script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  
 
-			  const visitData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: obfuscatedIp,
-				timestamp: new Date().toISOString()
-			  };
+	  window.addEventListener('load', () => {
+		
+		setTimeout(() => {
+		  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+
+			const visitData = {
+			  page: window.location.pathname,
+			  referrer: document.referrer || "Direct Visit",
+			  screen: `${window.screen.width}x${window.screen.height}`,
+			  language: navigator.language || "Unknown",
+			  userAgent: navigator.userAgent
+			};
+
+			const fetchTimeout = 4000; // 4 second timeout
+			const workerController = new AbortController();
+			const timeoutId = setTimeout(() => workerController.abort(), fetchTimeout);
 
 
-			  return fetch('https://api.mehdirezapour.com/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(visitData)
-			  });
+			const myCustomWorkerURL = 'https://api.mehdirezapour.ir/visits.json';
+
+			fetch(myCustomWorkerURL, {
+			  method: 'POST',
+			  headers: { 'Content-Type': 'application/json' },
+			  body: JSON.stringify(visitData),
+			  signal: workerController.signal
 			})
+			.then(() => clearTimeout(timeoutId))
 			.catch(err => {
-			  const fallbackData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: "Blocked",
-				timestamp: new Date().toISOString()
-			  };
 
-			  fetch('https://api.mehdirezapour.com/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(fallbackData)
-			  }).catch(e => console.log("Analytics error:", e));
+			   console.warn("Analytics request skipped.");
 			});
-		}
+		  }
+		}, 1500); 
 	  });
 	</script>
 	
