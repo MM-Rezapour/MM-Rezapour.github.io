@@ -1017,53 +1017,55 @@
 	</script>-->
 	
 	<script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  
+	  window.addEventListener('load', () => {
+		
+		setTimeout(() => {
+		  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+			
+			const fetchTimeout = 4000;
 
-		  fetch('https://api.ipify.org?format=json')
-			.then(res => res.json())
-			.then(data => {
-			  const rawIp = data.ip;
-			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
+			const ipifyController = new AbortController();
+			const ipifyTimeoutId = setTimeout(() => ipifyController.abort(), fetchTimeout);
 
-			  const visitData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: obfuscatedIp,
-				timestamp: new Date().toISOString()
-			  };
+			fetch('https://api.ipify.org?format=json', { signal: ipifyController.signal })
+			  .then(res => {
+				clearTimeout(ipifyTimeoutId);
+				return res.json();
+			  })
+			  .then(data => {
+				const rawIp = data.ip;
+				const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
 
+				const visitData = {
+				  page: window.location.pathname,
+				  referrer: document.referrer || "Direct Visit",
+				  screen: `${window.screen.width}x${window.screen.height}`,
+				  language: navigator.language || "Unknown",
+				  userAgent: navigator.userAgent,
+				  ip: obfuscatedIp,
+				  timestamp: new Date().toISOString()
+				};
 
-			  return fetch('https://firebase-proxy.mru-x90.workers.dev/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(visitData)
+				const workerController = new AbortController();
+				setTimeout(() => workerController.abort(), fetchTimeout);
+
+				const myCustomWorkerURL = 'https://api.mehdirezapour.com/visits.json';
+
+				return fetch(myCustomWorkerURL, {
+				  method: 'POST',
+				  headers: { 'Content-Type': 'application/json' },
+				  body: JSON.stringify(visitData),
+				  signal: workerController.signal
+				});
+			  })
+			  .catch(err => {
+				 console.warn("Analytics request skipped.");
 			  });
-			})
-			.catch(err => {
-			  const fallbackData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: "Blocked",
-				timestamp: new Date().toISOString()
-			  };
-
-			  fetch('https://firebase-proxy.mru-x90.workers.dev/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(fallbackData)
-			  }).catch(e => console.log("Analytics error:", e));
-			});
-		}
+		  }
+		}, 1500); 
 	  });
 	</script>
+
 	
 
 	<script>
