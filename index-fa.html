@@ -1054,6 +1054,55 @@
 	  });
 	</script>-->
 	
+	<script>
+	  window.addEventListener('DOMContentLoaded', () => {
+		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+		  
+
+		  fetch('https://api.ipify.org?format=json')
+			.then(res => res.json())
+			.then(data => {
+			  const rawIp = data.ip;
+			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
+
+			  const visitData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				ip: obfuscatedIp,
+				timestamp: new Date().toISOString()
+			  };
+
+
+			  return fetch('https://api.mehdirezapour.ir/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(visitData)
+			  });
+			})
+			.catch(err => {
+			  const fallbackData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				ip: "Blocked",
+				timestamp: new Date().toISOString()
+			  };
+
+			  fetch('https://api.mehdirezapour.ir/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(fallbackData)
+			  }).catch(e => console.log("Analytics error:", e));
+			});
+		}
+	  });
+	</script>
+	
 
 	
 
