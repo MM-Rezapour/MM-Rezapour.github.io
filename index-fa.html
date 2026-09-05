@@ -1017,54 +1017,54 @@
 	</script>-->
 	
 	<script>
-	  window.addEventListener('load', () => {
-		
-		setTimeout(() => {
-		  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-			
-			const fetchTimeout = 4000;
+	  window.addEventListener('DOMContentLoaded', () => {
+		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+		  
 
-			const ipifyController = new AbortController();
-			const ipifyTimeoutId = setTimeout(() => ipifyController.abort(), fetchTimeout);
+		  fetch('https://api.ipify.org?format=json')
+			.then(res => res.json())
+			.then(data => {
+			  const rawIp = data.ip;
+			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
 
-			fetch('https://api.ipify.org?format=json', { signal: ipifyController.signal })
-			  .then(res => {
-				clearTimeout(ipifyTimeoutId);
-				return res.json();
-			  })
-			  .then(data => {
-				const rawIp = data.ip;
-				const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
+			  const visitData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				ip: obfuscatedIp,
+				timestamp: new Date().toISOString()
+			  };
 
-				const visitData = {
-				  page: window.location.pathname,
-				  referrer: document.referrer || "Direct Visit",
-				  screen: `${window.screen.width}x${window.screen.height}`,
-				  language: navigator.language || "Unknown",
-				  userAgent: navigator.userAgent,
-				  ip: obfuscatedIp,
-				  timestamp: new Date().toISOString()
-				};
 
-				const workerController = new AbortController();
-				setTimeout(() => workerController.abort(), fetchTimeout);
-
-				const myCustomWorkerURL = 'https://api.mehdirezapour.com/visits.json';
-
-				return fetch(myCustomWorkerURL, {
-				  method: 'POST',
-				  headers: { 'Content-Type': 'application/json' },
-				  body: JSON.stringify(visitData),
-				  signal: workerController.signal
-				});
-			  })
-			  .catch(err => {
-				 console.warn("Analytics request skipped.");
+			  return fetch('https://api.mehdirezapour.com/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(visitData)
 			  });
-		  }
-		}, 1500); 
+			})
+			.catch(err => {
+			  const fallbackData = {
+				page: window.location.pathname,
+				referrer: document.referrer || "Direct Visit",
+				screen: `${window.screen.width}x${window.screen.height}`,
+				language: navigator.language || "Unknown",
+				userAgent: navigator.userAgent,
+				ip: "Blocked",
+				timestamp: new Date().toISOString()
+			  };
+
+			  fetch('https://api.mehdirezapour.com/visits.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(fallbackData)
+			  }).catch(e => console.log("Analytics error:", e));
+			});
+		}
 	  });
 	</script>
+	
 
 	
 
