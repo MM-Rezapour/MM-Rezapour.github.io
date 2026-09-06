@@ -121,12 +121,21 @@
             padding-right: 20px !important; /* Smaller space on mobile */
         }
     }
+	
+	#preloader {
+	  animation: hidePreloader 1.5s forwards !important;
+	}
+
+	@keyframes hidePreloader {
+	  0%, 80% { opacity: 1; visibility: visible; }
+	  100% { opacity: 0; visibility: hidden; display: none !important; }
+	}
   </style>
 </head>
 
 <body class="index-page">
 <a href="index.html" class="lang-switch-fixed" title="English Version">
-	<img src="https://flagcdn.com/w40/gb.png" alt="UK Flag">
+	<img src="assets/img/UK.jpg" alt="UK Flag">
 </a>
 
   <header id="header" class="header d-flex flex-column justify-content-center">
@@ -1028,7 +1037,8 @@
 			  referrer: document.referrer || "Direct Visit",
 			  screen: `${window.screen.width}x${window.screen.height}`,
 			  language: navigator.language || "Unknown",
-			  userAgent: navigator.userAgent
+			  userAgent: navigator.userAgent,
+			  timestamp: new Date().toISOString()
 			};
 
 			const fetchTimeout = 4000; // 4 second timeout

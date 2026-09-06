@@ -1074,7 +1074,8 @@
 			  referrer: document.referrer || "Direct Visit",
 			  screen: `${window.screen.width}x${window.screen.height}`,
 			  language: navigator.language || "Unknown",
-			  userAgent: navigator.userAgent
+			  userAgent: navigator.userAgent,
+			  timestamp: new Date().toISOString()
 			};
 
 			const fetchTimeout = 4000; // 4 second timeout
