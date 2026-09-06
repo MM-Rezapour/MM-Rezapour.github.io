@@ -54,6 +54,15 @@
             padding-right: 20px !important;
         }
     }
+	
+	#preloader {
+	  animation: hidePreloader 1.5s forwards !important;
+	}
+
+	@keyframes hidePreloader {
+	  0%, 80% { opacity: 1; visibility: visible; }
+	  100% { opacity: 0; visibility: hidden; display: none !important; }
+	}
   </style>
   
   <!-- Structured Data for Academic Profile -->
@@ -1053,7 +1062,7 @@
 	  });
 	</script>-->
 	
-	<!--<script>
+	<script>
 
 	  window.addEventListener('load', () => {
 		
@@ -1089,7 +1098,7 @@
 		  }
 		}, 1500); 
 	  });
-	</script>-->
+	</script>
 	
 
 	<script>
