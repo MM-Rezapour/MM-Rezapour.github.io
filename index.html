@@ -1083,7 +1083,7 @@
 	  });
 	</script>-->
 	
-	<script>
+	<!--<script>
 	  window.addEventListener('load', () => {
 		setTimeout(() => {
 		  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
@@ -1138,6 +1138,64 @@
 
 		}, 1500);
 	  });
+	</script>-->.
+	
+	<script>
+	  // Run ONLY when the browser has finished painting and is completely idle
+	  const runAnalytics = () => {
+		if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
+
+		const visitData = {
+		  page: window.location.pathname,
+		  referrer: document.referrer || "Direct Visit",
+		  screen: `${window.screen.width}x${window.screen.height}`,
+		  language: navigator.language || "Unknown",
+		  userAgent: navigator.userAgent,
+		  timestamp: new Date().toISOString()
+		};
+
+		function sendVisit(url, headers, payload, timeoutMs) {
+		  const controller = new AbortController();
+		  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+		  return fetch(url, {
+			method: 'POST',
+			headers: headers,
+			body: JSON.stringify(payload),
+			signal: controller.signal
+		  }).finally(() => clearTimeout(timeoutId));
+		}
+
+		const primaryURL = 'https://api.mehdirezapour.ir/visits.json';
+		const primaryHeaders = { 'Content-Type': 'application/json' };
+
+		const supabaseProjectURL = 'https://wedtnvcmretvjgcgmblp.supabase.co';
+		const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0';
+		const fallbackURL = `${supabaseProjectURL}/rest/v1/visits`;
+		const fallbackHeaders = {
+		  'Content-Type': 'application/json',
+		  'apikey': supabaseAnonKey,
+		  'Authorization': `Bearer ${supabaseAnonKey}`,
+		  'Prefer': 'return=minimal'
+		};
+
+		// Cut timeout from 3500ms down to 1800ms
+		sendVisit(primaryURL, primaryHeaders, visitData, 1800)
+		  .then(res => {
+			if (!res.ok) throw new Error();
+		  })
+		  .catch(() => {
+			// Cloudflare failed quickly -> Log to Supabase immediately
+			sendVisit(fallbackURL, fallbackHeaders, visitData, 3000).catch(() => {});
+		  });
+	  };
+
+	  // Modern browser-friendly trigger
+	  if ('requestIdleCallback' in window) {
+		window.addEventListener('load', () => requestIdleCallback(runAnalytics, { timeout: 2000 }));
+	  } else {
+		window.addEventListener('load', () => setTimeout(runAnalytics, 1500));
+	  }
 	</script>
 	
 
