@@ -1171,11 +1171,11 @@
 
 		const supabaseProjectURL = 'https://wedtnvcmretvjgcgmblp.supabase.co';
 		const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0';
-		const fallbackURL = `${supabaseProjectURL}/rest/v1/visits`;
+		const fallbackURL = '${supabaseProjectURL}/rest/v1/visits';
 		const fallbackHeaders = {
 		  'Content-Type': 'application/json',
 		  'apikey': supabaseAnonKey,
-		  'Authorization': `Bearer ${supabaseAnonKey}`,
+		  'Authorization': 'Bearer ${supabaseAnonKey}',
 		  'Prefer': 'return=minimal'
 		};
 
