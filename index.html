@@ -998,24 +998,6 @@
 	<!--<script>
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  fetch('https://eovygkwcis0a89k.m.pipedream.net', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-			  page: window.location.pathname,
-			  referrer: document.referrer || "Direct Visit",
-			  screen: `${window.screen.width}x${window.screen.height}`,
-			  language: navigator.language || "Unknown",               
-			  timestamp: new Date().toISOString()
-			})
-		  }).catch(err => console.log("Analytics error:", err));
-		}
-	  });
-	</script>-->
-	
-	<!--<script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  
 
 		  fetch('https://api.ipify.org?format=json')
@@ -1062,7 +1044,7 @@
 	  });
 	</script>-->
 	
-	<script>
+	<!--<script>
 
 	  window.addEventListener('load', () => {
 		
@@ -1098,6 +1080,63 @@
 			});
 		  }
 		}, 1500); 
+	  });
+	</script>-->
+	
+	<script>
+	  window.addEventListener('load', () => {
+		setTimeout(() => {
+		  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
+
+		  const visitData = {
+			page: window.location.pathname,
+			referrer: document.referrer || "Direct Visit",
+			screen: `${window.screen.width}x${window.screen.height}`,
+			language: navigator.language || "Unknown",
+			userAgent: navigator.userAgent,
+			timestamp: new Date().toISOString()
+		  };
+
+		  // Helper function to send data with a strict timeout
+		  function sendVisit(url, headers, payload, timeoutMs = 3500) {
+			const controller = new AbortController();
+			const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+			return fetch(url, {
+			  method: 'POST',
+			  headers: headers,
+			  body: JSON.stringify(payload),
+			  signal: controller.signal
+			}).finally(() => clearTimeout(timeoutId));
+		  }
+
+		  // 1. PRIMARY: Cloudflare Worker
+		  const primaryURL = 'https://api.mehdirezapour.ir/visits.json';
+		  const primaryHeaders = { 'Content-Type': 'application/json' };
+
+		  // 2. FALLBACK: (Choose Supabase, Pipedream, or Google Apps Script below)
+		  const fallbackURL = 'https://wedtnvcmretvjgcgmblp.supabase.co/rest/v1/visits';
+		  const fallbackHeaders = {
+			  'Content-Type': 'application/json',
+			  'apikey': 'sb_publishable_bcMbDtzIG1ZDcn3Ip_6SmA_bzAjVeli',
+			  'Authorization': 'Bearer sb_publishable_bcMbDtzIG1ZDcn3Ip_6SmA_bzAjVeli'
+		  };
+
+		  sendVisit(primaryURL, primaryHeaders, visitData, 3500)
+			.then(response => {
+			  if (!response.ok) throw new Error("Primary failed with status " + response.status);
+			  // Primary succeeded (visitor is outside Iran or on VPN)
+			})
+			.catch(err => {
+			  // Cloudflare failed or timed out (e.g., visitor is on an Iranian ISP)
+			  // Silently trigger the Fallback
+			  sendVisit(fallbackURL, fallbackHeaders, visitData, 4000)
+				.catch(() => {
+				  // Both failed, ignore silently to protect user experience
+				});
+			});
+
+		}, 1500);
 	  });
 	</script>
 	
