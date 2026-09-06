@@ -12,14 +12,14 @@
   <meta name="author" content="Mohammad Mahdi Rezapour">
 
   <!-- Language Mapping (Crucial for dual-language sites) -->
-  <link rel="alternate" hreflang="en" href="https://mm-rezapour.github.io/index.html" />
-  <link rel="alternate" hreflang="fa" href="https://mm-rezapour.github.io/index-fa.html" />
+  <link rel="alternate" hreflang="en" href="https://mehdirezapour.ir/index.html" />
+  <link rel="alternate" hreflang="fa" href="https://mehdirezapour.ir/index-fa.html" />
 
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:title" content="Mohammad Mahdi Rezapour | AI Researcher & Game Developer">
   <meta property="og:description" content="Assistant Professor at University of Isfahan. Expert in AI, LLMs, and Serious Games.">
   <meta property="og:image" content="assets/img/profile-img.jpg"> <!-- Ensure this points to your photo -->
-  <meta property="og:url" content="https://mm-rezapour.github.io">
+  <meta property="og:url" content="https://mehdirezapour.ir">
   <meta property="og:type" content="profile">
 
   <!-- Favicons -->
@@ -92,7 +92,7 @@
         "name": "Malayer University"
       }
     ],
-    "url": "https://mm-rezapour.github.io",
+    "url": "https://mehdirezapour.ir/index.html",
     "sameAs": [
       "https://scholar.google.com/citations?user=1r-O1xIAAAAJ&hl=en&oi=ao",
       "https://www.linkedin.com/in/mmrezapour/",
@@ -359,7 +359,7 @@
     <div class="row gy-4 justify-content-center align-items-center">
       <div class="col-lg-7">
         <div class="news-content">
-          <h3><a href="https://mm-rezapour.github.io/" target="_blank">Research Meeting: Innovative Research Areas in Computer Games</a></h3>
+          <h3><a href="https://mehdirezapour.ir" target="_blank">Research Meeting: Innovative Research Areas in Computer Games</a></h3>
           <p>
             Announcing a scientific meeting for Research Week on the topic of "Innovative Research Areas in Computer Games," presented by Dr. Mohammad Mahdi Rezapour, a faculty member of the Software Engineering group at the University of Isfahan.
           </p>
@@ -1004,7 +1004,7 @@
 	  });
 	</script>-->
 	
-	<script>
+	<!--<script>
 	  window.addEventListener('DOMContentLoaded', () => {
 		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
 		  
@@ -1050,6 +1050,44 @@
 			  }).catch(e => console.log("Analytics error:", e));
 			});
 		}
+	  });
+	</script>-->
+	
+	<script>
+
+	  window.addEventListener('load', () => {
+		
+		setTimeout(() => {
+		  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+
+			const visitData = {
+			  page: window.location.pathname,
+			  referrer: document.referrer || "Direct Visit",
+			  screen: `${window.screen.width}x${window.screen.height}`,
+			  language: navigator.language || "Unknown",
+			  userAgent: navigator.userAgent
+			};
+
+			const fetchTimeout = 4000; // 4 second timeout
+			const workerController = new AbortController();
+			const timeoutId = setTimeout(() => workerController.abort(), fetchTimeout);
+
+
+			const myCustomWorkerURL = 'https://api.mehdirezapour.ir/visits.json';
+
+			fetch(myCustomWorkerURL, {
+			  method: 'POST',
+			  headers: { 'Content-Type': 'application/json' },
+			  body: JSON.stringify(visitData),
+			  signal: workerController.signal
+			})
+			.then(() => clearTimeout(timeoutId))
+			.catch(err => {
+
+			   console.warn("Analytics request skipped.");
+			});
+		  }
+		}, 1500); 
 	  });
 	</script>
 	
