@@ -1242,6 +1242,17 @@
 		observer.observe(newsSection);
 	  });
 	</script>
+	
+	<script>
+	  // Refresh AOS after all images, Isotope, and layouts have settled
+	  window.addEventListener('load', () => {
+		setTimeout(() => {
+		  if (typeof AOS !== 'undefined') {
+			AOS.refresh();
+		  }
+		}, 800);
+	  });
+	</script>
 
 
 
