@@ -1009,68 +1009,11 @@
 	</script>
 	
 	
-	<!--<script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  fetch('https://eovygkwcis0a89k.m.pipedream.net', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-			  page: window.location.pathname,
-			  referrer: document.referrer || "Direct Visit",
-			  screen: `${window.screen.width}x${window.screen.height}`,
-			  language: navigator.language || "Unknown",               
-			  timestamp: new Date().toISOString()
-			})
-		  }).catch(err => console.log("Analytics error:", err));
-		}
-	  });
-	</script>-->
-	
-	<!--<script>
-
-	  window.addEventListener('load', () => {
-		
-		setTimeout(() => {
-		  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-
-			const visitData = {
-			  page: window.location.pathname,
-			  referrer: document.referrer || "Direct Visit",
-			  screen: `${window.screen.width}x${window.screen.height}`,
-			  language: navigator.language || "Unknown",
-			  userAgent: navigator.userAgent,
-			  timestamp: new Date().toISOString()
-			};
-
-			const fetchTimeout = 4000; // 4 second timeout
-			const workerController = new AbortController();
-			const timeoutId = setTimeout(() => workerController.abort(), fetchTimeout);
-
-
-			const myCustomWorkerURL = 'https://api.mehdirezapour.ir/visits.json';
-
-			fetch(myCustomWorkerURL, {
-			  method: 'POST',
-			  headers: { 'Content-Type': 'application/json' },
-			  body: JSON.stringify(visitData),
-			  signal: workerController.signal
-			})
-			.then(() => clearTimeout(timeoutId))
-			.catch(err => {
-
-			   console.warn("Analytics request skipped.");
-			});
-		  }
-		}, 1500); 
-	  });
-	</script>-->
-	
 	<script>
-	  window.addEventListener('load', () => {
-		setTimeout(() => {
-		  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
+	  (function() {
+		if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
 
+		const startTracking = () => {
 		  const visitData = {
 			page: window.location.pathname,
 			referrer: document.referrer || "Direct Visit",
@@ -1080,99 +1023,70 @@
 			timestamp: new Date().toISOString()
 		  };
 
-		  // Helper function to send data with a strict timeout
-		  function sendVisit(url, headers, payload, timeoutMs = 3500) {
-			const controller = new AbortController();
-			const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-
-			return fetch(url, {
-			  method: 'POST',
-			  headers: headers,
-			  body: JSON.stringify(payload),
-			  signal: controller.signal
-			}).finally(() => clearTimeout(timeoutId));
-		  }
-
-		  // 1. PRIMARY: Cloudflare Worker
 		  const primaryURL = 'https://api.mehdirezapour.ir/visits.json';
-		  const primaryHeaders = { 'Content-Type': 'application/json' };
-
-		  // 2. FALLBACK: (Choose Supabase, Pipedream, or Google Apps Script below)
 		  const fallbackURL = 'https://wedtnvcmretvjgcgmblp.supabase.co/rest/v1/visits';
 		  const fallbackHeaders = {
-			  'Content-Type': 'application/json',
-			  'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0',
-			  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0'
+			'Content-Type': 'application/json',
+			'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0',
+			'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0',
+			'Prefer': 'return=minimal'
 		  };
 
-		  sendVisit(primaryURL, primaryHeaders, visitData, 3500)
-			.then(response => {
-			  if (!response.ok) throw new Error("Primary failed with status " + response.status);
-			  // Primary succeeded (visitor is outside Iran or on VPN)
+		  console.log("[Tracker] Initiating primary (Cloudflare)...");
+
+		  // 1. Primary with 1.8s timeout (fails fast on ERR_CONNECTION_RESET)
+		  const primaryController = new AbortController();
+		  const primaryTimer = setTimeout(() => primaryController.abort(), 1800);
+
+		  fetch(primaryURL, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(visitData),
+			signal: primaryController.signal,
+			keepalive: true
+		  })
+		  .then(res => {
+			clearTimeout(primaryTimer);
+			if (!res.ok) throw new Error("Status: " + res.status);
+			console.log("[Tracker] Successfully recorded via Cloudflare.");
+		  })
+		  .catch(err => {
+			clearTimeout(primaryTimer);
+			console.warn("[Tracker] Cloudflare blocked/timed out. Switching to Supabase fallback...");
+
+			// 2. Fallback with a generous 15-second timeout for slow connections
+			const fallbackController = new AbortController();
+			const fallbackTimer = setTimeout(() => fallbackController.abort(), 15000);
+
+			fetch(fallbackURL, {
+			  method: 'POST',
+			  headers: fallbackHeaders,
+			  body: JSON.stringify(visitData),
+			  signal: fallbackController.signal,
+			  keepalive: true
 			})
-			.catch(err => {
-			  // Cloudflare failed or timed out (e.g., visitor is on an Iranian ISP)
-			  // Silently trigger the Fallback
-			  sendVisit(fallbackURL, fallbackHeaders, visitData, 4000)
-				.catch(() => {
-				  // Both failed, ignore silently to protect user experience
-				});
-			});
-
-		}, 1500);
-	  });
-	</script>
-	
-	<!--<script>
-	  window.addEventListener('DOMContentLoaded', () => {
-		if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-		  
-
-		  fetch('https://api.ipify.org?format=json')
-			.then(res => res.json())
-			.then(data => {
-			  const rawIp = data.ip;
-			  const obfuscatedIp = btoa(rawIp.split('.').reverse().join('x'));
-
-			  const visitData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: obfuscatedIp,
-				timestamp: new Date().toISOString()
-			  };
-
-
-			  return fetch('https://api.mehdirezapour.ir/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(visitData)
-			  });
+			.then(res => {
+			  clearTimeout(fallbackTimer);
+			  if (res.ok) {
+				console.log("[Tracker] Successfully recorded via Supabase!");
+			  } else {
+				console.error("[Tracker] Supabase responded with error:", res.status);
+			  }
 			})
-			.catch(err => {
-			  const fallbackData = {
-				page: window.location.pathname,
-				referrer: document.referrer || "Direct Visit",
-				screen: `${window.screen.width}x${window.screen.height}`,
-				language: navigator.language || "Unknown",
-				userAgent: navigator.userAgent,
-				ip: "Blocked",
-				timestamp: new Date().toISOString()
-			  };
-
-			  fetch('https://api.mehdirezapour.ir/visits.json', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(fallbackData)
-			  }).catch(e => console.log("Analytics error:", e));
+			.catch(fallbackErr => {
+			  clearTimeout(fallbackTimer);
+			  console.error("[Tracker] Supabase failed:", fallbackErr.message);
 			});
+		  });
+		};
+
+		if (document.readyState === 'complete' || document.readyState === 'interactive') {
+		  setTimeout(startTracking, 500);
+		} else {
+		  document.addEventListener('DOMContentLoaded', () => setTimeout(startTracking, 500));
 		}
-	  });
-	</script>-->
-	
-
+	  })();
+	</script>
 	
 
 	<script>
