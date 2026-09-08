@@ -1095,7 +1095,7 @@
 	  });
 	</script>-->
 	
-	<script>
+	<!--<script> 20260908-12:02 pm
 	  window.addEventListener('load', () => {
 		setTimeout(() => {
 		  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
@@ -1150,6 +1150,81 @@
 
 		}, 1500);
 	  });
+	</script>-->
+	
+	<script>
+	  (function() {
+		// 1. Don't run on local testing
+		if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
+
+		const startTracking = () => {
+		  const visitData = {
+			page: window.location.pathname,
+			referrer: document.referrer || "Direct Visit",
+			screen: `${window.screen.width}x${window.screen.height}`,
+			language: navigator.language || "Unknown",
+			userAgent: navigator.userAgent,
+			timestamp: new Date().toISOString()
+		  };
+
+		  // Helper function using keepalive to survive tab closes
+		  function sendVisit(url, headers, payload, timeoutMs = 2000) {
+			const controller = new AbortController();
+			const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+			return fetch(url, {
+			  method: 'POST',
+			  headers: headers,
+			  body: JSON.stringify(payload),
+			  signal: controller.signal,
+			  keepalive: true // 🟢 Ensures request completes even if user navigates away
+			}).finally(() => clearTimeout(timeoutId));
+		  }
+
+		  // Endpoints
+		  const primaryURL = 'https://api.mehdirezapour.ir/visits.json';
+		  const primaryHeaders = { 'Content-Type': 'application/json' };
+
+		  const fallbackURL = 'https://wedtnvcmretvjgcgmblp.supabase.co/rest/v1/visits';
+		  const fallbackHeaders = {
+			'Content-Type': 'application/json',
+			'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0',
+			'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZHRudmNtcmV0dmpnY2dtYmxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MjA5NjksImV4cCI6MjEwNDI5Njk2OX0.sf1PEWtHM-l8d_oaTA0zuKPqoMPQlRWCeM2FWmxXDh0',
+			'Prefer': 'return=minimal'
+		  };
+
+		  console.log("[Tracker] Initiating primary (Cloudflare)...");
+
+		  // Cut timeout to 1800ms for faster failover
+		  sendVisit(primaryURL, primaryHeaders, visitData, 1800)
+			.then(response => {
+			  if (!response.ok) throw new Error("Status: " + response.status);
+			  console.log("[Tracker] Successfully recorded via Cloudflare/Firebase.");
+			})
+			.catch(err => {
+			  console.warn("[Tracker] Cloudflare failed/timed out. Switching to Supabase fallback...", err.message);
+
+			  sendVisit(fallbackURL, fallbackHeaders, visitData, 3500)
+				.then(res => {
+				  if (res.ok) {
+					console.log("[Tracker] Successfully recorded via Supabase.");
+				  } else {
+					console.error("[Tracker] Supabase returned error:", res.status);
+				  }
+				})
+				.catch(fallbackErr => {
+				  console.error("[Tracker] Both services failed or were blocked by ad-blocker:", fallbackErr.message);
+				});
+			});
+		};
+
+		// 🟢 Don't wait for every image to download; trigger as soon as DOM is interactive
+		if (document.readyState === 'complete' || document.readyState === 'interactive') {
+		  setTimeout(startTracking, 1000);
+		} else {
+		  document.addEventListener('DOMContentLoaded', () => setTimeout(startTracking, 1000));
+		}
+	  })();
 	</script>
 	
 	<!--<script>
@@ -1210,6 +1285,7 @@
 	  }
 	</script>-->
 	
+
 
 	<script>
 	  document.addEventListener('DOMContentLoaded', function() {
