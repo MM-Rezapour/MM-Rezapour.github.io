@@ -123,18 +123,114 @@
         }
     }
 	
-	#preloader {
-	  animation: hidePreloader 2.5s forwards !important;
+
+	/* ===================================================
+	   SMART PRELOADER (Overrides Template main.css)
+	=================================================== */
+
+	/* 1. 🛑 Kill the template's duplicate spinner pseudo-element */
+	#preloader:before {
+	  content: none !important;
+	  display: none !important;
 	}
 
-	@keyframes hidePreloader {
-	  0%, 80% { opacity: 1; visibility: visible; }
-	  100% { opacity: 0; visibility: hidden; display: none !important; }
+	/* 2. Style the preloader container */
+	#preloader {
+	  position: fixed !important;
+	  inset: 0 !important;
+	  z-index: 999999 !important;
+	  background: #ffffff !important;
+	  display: flex !important;
+	  flex-direction: column !important;
+	  justify-content: center !important;
+	  align-items: center !important;
+	  opacity: 1;
+	  visibility: visible;
+	  transition: opacity 0.5s ease, visibility 0.5s ease !important;
 	}
+
+	#preloader.fade-out {
+	  opacity: 0 !important;
+	  visibility: hidden !important;
+	  pointer-events: none !important;
+	}
+
+	/* 3. The single, clean spinner */
+	.preloader-spinner {
+	  width: 50px !important;
+	  height: 50px !important;
+	  border: 4px solid #f0f0f0 !important;
+	  border-top: 4px solid #0563bb !important; /* Theme blue */
+	  border-radius: 50% !important;
+	  animation: spinPreloader 0.8s linear infinite !important;
+	  flex-shrink: 0;
+	}
+
+	@keyframes spinPreloader {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+
+	/* 4. The professional notice */
+	.preloader-notice {
+	  display: block !important;
+	  margin-top: 22px !important;
+	  max-width: 480px !important;
+	  padding: 0 24px !important;
+	  text-align: center !important;
+	  font-size: 13.5px !important;
+	  color: #555555 !important;
+	  line-height: 1.6 !important;
+	  opacity: 0;
+	  transform: translateY(10px);
+	  transition: opacity 0.6s ease, transform 0.6s ease !important;
+	}
+
+	/* When active, show the notice */
+	.preloader-notice.show-notice {
+	  opacity: 1 !important;
+	  transform: translateY(0) !important;
+	}
+
   </style>
 </head>
 
 <body class="index-page">
+
+
+<!-- Preloader -->
+<!-- Enhanced Preloader with Adaptive Notice -->
+<div id="preloader">
+<div class="preloader-spinner"></div>
+<p id="preloader-notice" class="preloader-notice" style="direction: rtl; font-family: 'Vazirmatn', sans-serif;">
+  در حال بارگذاری محتوا... با توجه به وضعیت مسیریابی و محدودیت‌های ترافیک بین‌الملل، ممکن است برقراری ارتباط چند لحظه زمان ببرد. از شکیبایی شما سپاسگزاریم.
+</p>
+</div>
+
+<script>
+(function() {
+  const preloader = document.getElementById('preloader');
+  const notice = document.getElementById('preloader-notice');
+  if (!preloader) return;
+
+  const noticeTimer = setTimeout(() => {
+	if (notice) notice.classList.add('show-notice');
+  }, 6500);
+
+  const removePreloader = () => {
+	clearTimeout(noticeTimer);
+	preloader.classList.add('fade-out');
+	setTimeout(() => {
+	  if (preloader.parentNode) preloader.remove();
+	  if (typeof AOS !== 'undefined') AOS.refresh();
+	}, 550);
+  };
+
+  window.addEventListener('load', removePreloader);
+  setTimeout(removePreloader, 30000);
+})();
+</script>
+
 <a href="index.html" class="lang-switch-fixed" title="English Version">
 	<img src="assets/img/UK.jpg" alt="UK Flag">
 </a>
@@ -944,8 +1040,6 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
