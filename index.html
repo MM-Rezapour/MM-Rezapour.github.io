@@ -76,6 +76,57 @@
 	body, h1, h2, h3, h4, h5, h6, p, a, span {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     }
+	
+	/* Smart Preloader Styling */
+	#preloader {
+	  position: fixed;
+	  inset: 0;
+	  z-index: 999999;
+	  background: #ffffff;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  transition: opacity 0.5s ease, visibility 0.5s ease;
+	}
+
+	#preloader.fade-out {
+	  opacity: 0;
+	  visibility: hidden;
+	}
+
+	/* Spinner Animation */
+	.preloader-spinner {
+	  width: 48px;
+	  height: 48px;
+	  border: 4px solid #e0e0e0;
+	  border-top-color: #0563bb; /* Theme Blue */
+	  border-radius: 50%;
+	  animation: spin 0.9s linear infinite;
+	}
+
+	@keyframes spin {
+	  to { transform: rotate(360deg); }
+	}
+
+	/* Professional Notice (Hidden initially) */
+	.preloader-notice {
+	  margin-top: 24px;
+	  max-width: 460px;
+	  padding: 0 20px;
+	  text-align: center;
+	  font-size: 14px;
+	  color: #6c757d;
+	  line-height: 1.6;
+	  opacity: 0;
+	  transform: translateY(8px);
+	  transition: opacity 0.6s ease, transform 0.6s ease;
+	}
+
+	.preloader-notice.show {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
   </style>
   
   <!-- Structured Data for Academic Profile -->
@@ -948,7 +999,14 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  <!--<div id="preloader"></div>-->
+	<!-- Enhanced Preloader with Adaptive Notice -->
+	<div id="preloader">
+	  <div class="preloader-spinner"></div>
+	  <p id="preloader-notice" class="preloader-notice">
+		Establishing secure connection... Content delivery may take slightly longer depending on regional network routes. Thank you for your patience.
+	  </p>
+	</div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1129,6 +1187,36 @@
 		  }
 		}, 800);
 	  });
+	</script>
+	
+	
+	<script>
+	  (function() {
+		const preloader = document.getElementById('preloader');
+		const notice = document.getElementById('preloader-notice');
+		if (!preloader) return;
+
+		// 1. Show the professional notice if loading takes longer than 3.5s
+		const noticeTimer = setTimeout(() => {
+		  if (notice) notice.classList.add('show');
+		}, 3500);
+
+		// 2. Function to dismiss preloader smoothly
+		const dismissPreloader = () => {
+		  clearTimeout(noticeTimer);
+		  preloader.classList.add('fade-out');
+		  setTimeout(() => {
+			preloader.remove();
+			if (typeof AOS !== 'undefined') AOS.refresh();
+		  }, 500);
+		};
+
+		// 3. Dismiss when page completely loads
+		window.addEventListener('load', dismissPreloader);
+
+		// 4. Safety Net: Dismiss after 10s even if an external asset stalled
+		setTimeout(dismissPreloader, 10000);
+	  })();
 	</script>
 
 
