@@ -1154,7 +1154,6 @@
 	
 	<script>
 	  (function() {
-		// 1. Don't run on local testing
 		if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
 
 		const startTracking = () => {
@@ -1167,24 +1166,7 @@
 			timestamp: new Date().toISOString()
 		  };
 
-		  // Helper function using keepalive to survive tab closes
-		  function sendVisit(url, headers, payload, timeoutMs = 2000) {
-			const controller = new AbortController();
-			const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-
-			return fetch(url, {
-			  method: 'POST',
-			  headers: headers,
-			  body: JSON.stringify(payload),
-			  signal: controller.signal,
-			  keepalive: true // 🟢 Ensures request completes even if user navigates away
-			}).finally(() => clearTimeout(timeoutId));
-		  }
-
-		  // Endpoints
 		  const primaryURL = 'https://api.mehdirezapour.ir/visits.json';
-		  const primaryHeaders = { 'Content-Type': 'application/json' };
-
 		  const fallbackURL = 'https://wedtnvcmretvjgcgmblp.supabase.co/rest/v1/visits';
 		  const fallbackHeaders = {
 			'Content-Type': 'application/json',
@@ -1195,34 +1177,56 @@
 
 		  console.log("[Tracker] Initiating primary (Cloudflare)...");
 
-		  // Cut timeout to 1800ms for faster failover
-		  sendVisit(primaryURL, primaryHeaders, visitData, 1800)
-			.then(response => {
-			  if (!response.ok) throw new Error("Status: " + response.status);
-			  console.log("[Tracker] Successfully recorded via Cloudflare/Firebase.");
-			})
-			.catch(err => {
-			  console.warn("[Tracker] Cloudflare failed/timed out. Switching to Supabase fallback...", err.message);
+		  // 1. Primary with 1.8s timeout (fails fast on ERR_CONNECTION_RESET)
+		  const primaryController = new AbortController();
+		  const primaryTimer = setTimeout(() => primaryController.abort(), 1800);
 
-			  sendVisit(fallbackURL, fallbackHeaders, visitData, 3500)
-				.then(res => {
-				  if (res.ok) {
-					console.log("[Tracker] Successfully recorded via Supabase.");
-				  } else {
-					console.error("[Tracker] Supabase returned error:", res.status);
-				  }
-				})
-				.catch(fallbackErr => {
-				  console.error("[Tracker] Both services failed or were blocked by ad-blocker:", fallbackErr.message);
-				});
+		  fetch(primaryURL, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(visitData),
+			signal: primaryController.signal,
+			keepalive: true
+		  })
+		  .then(res => {
+			clearTimeout(primaryTimer);
+			if (!res.ok) throw new Error("Status: " + res.status);
+			console.log("[Tracker] Successfully recorded via Cloudflare.");
+		  })
+		  .catch(err => {
+			clearTimeout(primaryTimer);
+			console.warn("[Tracker] Cloudflare blocked/timed out. Switching to Supabase fallback...");
+
+			// 2. Fallback with a generous 15-second timeout for slow connections
+			const fallbackController = new AbortController();
+			const fallbackTimer = setTimeout(() => fallbackController.abort(), 15000);
+
+			fetch(fallbackURL, {
+			  method: 'POST',
+			  headers: fallbackHeaders,
+			  body: JSON.stringify(visitData),
+			  signal: fallbackController.signal,
+			  keepalive: true
+			})
+			.then(res => {
+			  clearTimeout(fallbackTimer);
+			  if (res.ok) {
+				console.log("[Tracker] Successfully recorded via Supabase!");
+			  } else {
+				console.error("[Tracker] Supabase responded with error:", res.status);
+			  }
+			})
+			.catch(fallbackErr => {
+			  clearTimeout(fallbackTimer);
+			  console.error("[Tracker] Supabase failed:", fallbackErr.message);
 			});
+		  });
 		};
 
-		// 🟢 Don't wait for every image to download; trigger as soon as DOM is interactive
 		if (document.readyState === 'complete' || document.readyState === 'interactive') {
-		  setTimeout(startTracking, 1000);
+		  setTimeout(startTracking, 500);
 		} else {
-		  document.addEventListener('DOMContentLoaded', () => setTimeout(startTracking, 1000));
+		  document.addEventListener('DOMContentLoaded', () => setTimeout(startTracking, 500));
 		}
 	  })();
 	</script>
