@@ -224,7 +224,7 @@
 	  if (notice) {
 		notice.classList.add('show-notice');
 	  }
-	}, 2500);
+	}, 6500);
 
 	// 2. Smooth fade-out function
 	const removePreloader = () => {
@@ -242,7 +242,7 @@
 	window.addEventListener('load', removePreloader);
 
 	// 4. Safety Fallback: Dismiss after 9 seconds regardless of hanging assets
-	setTimeout(removePreloader, 15000);
+	setTimeout(removePreloader, 30000);
   })();
 </script>
 
