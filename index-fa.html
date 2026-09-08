@@ -1036,7 +1036,7 @@
 
 		  // 1. Primary with 1.8s timeout (fails fast on ERR_CONNECTION_RESET)
 		  const primaryController = new AbortController();
-		  const primaryTimer = setTimeout(() => primaryController.abort(), 1800);
+		  const primaryTimer = setTimeout(() => primaryController.abort(), 3500);
 
 		  fetch(primaryURL, {
 			method: 'POST',
